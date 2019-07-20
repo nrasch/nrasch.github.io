@@ -1,11 +1,12 @@
 # Site setings
 name: 'nrasch.github.io'
+title: 'nrasch.github.io'
 description: '404 Clever Blog Title Not Found'
 meta_description: '404 Clever Blog Title Not Found'
 logo: 'assets/images/logo.png'
 favicon: 'assets/images/favicon.ico'
-baseurl: https://nrasch.github.io/
-production_url: https://nrasch.github.io/
+baseurl: 
+production_url: https://nrasch.github.io
 disqus: ''
 mailchimp_url: ''
 cover_image: bc_1.jpg
@@ -18,13 +19,13 @@ author:
   name: 'Nathan Rasch'
   image: 'nathan_rasch.jpg'
   greetings: 'Welcome'
-  description: 'My name is Nathan Rasch. I'm a software developer and leader living in Colorado Springs, CO.'
-  bio: 'Nathan has worked throughout his career as leader, project manager, and software developer.  He has an MBA, a BA in Mathematics, and is a Certified ScrumMaster (CSM) and PMI Certified Associate in Project Management (CAPM).'
+  description: "My name is Nathan Rasch. I'm a software developer and organizational leader living in Colorado Springs, CO."
+  bio: "Nathan has worked throughout his career as leader, project manager, and software developer.  He has an MBA, BA in Mathematics, and is a Certified ScrumMaster (CSM) and PMI Certified Associate in Project Management (CAPM)."
 
 # Contact form setings
 email: nathan@obsidiantech.net
-contact_page_description: ""
-thankyou_page_description: "Your message has been successfully sent. We will contact you very soon!"
+contact_page_description: "Please enter your message details below."
+thankyou_page_description: "Thank you.  Your message has been successfully sent."
 
 # Social links
 github: 'nrasch'
@@ -33,9 +34,9 @@ linkedin: 'nathanrasch'
 # Navigation
 navigation:
   - text: About
-    url: https://nrasch.github.io/about.html
+    url: /about/
   - text: Contact Me
-    url: https://nrasch.github.io/contact.html
+    url: /contact/
 
 # Required Plugins
 plugins_dir:
