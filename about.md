@@ -5,9 +5,9 @@ title: About
 
 {% include image-caption.html imageurl="/assets/images/pages/about.jpg" title="About" caption="" %}
 
-Nathan Rasch has worked throughout his career as a leader, project manager, and software developer.  he has an MBA in business administration, a BA in Mathematics, is a Certified ScrumMaster (CSM), and a PMI Certified Associate in Project Management (CAPM). He's working in a number of challenging fields such as biopharmaceuticals, banking, and telecommunications.
+Nathan Rasch has worked throughout his career as a leader, project manager, and software developer.  He has an MBA in business administration, a BA in Mathematics, is a Certified ScrumMaster (CSM), and a PMI Certified Associate in Project Management (CAPM). He's worked in a number of challenging fields such as biopharmaceuticals, banking, and telecommunications.
 
-Some of his successful work experiences include:
+Some of Nathan's successful work experiences include:
 
 * Leadership of Investability’s primary cross-functional software development team.  He effectively led the team from historically missing sprint commitments to a release record of on-time sprint commitment delivery by working to increase team morale and cohesion, removing roadblocks and building relationships with other departments, and putting in place an effective software development and deployment process.
 

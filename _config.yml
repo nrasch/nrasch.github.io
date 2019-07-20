@@ -20,7 +20,7 @@ author:
   image: 'nathan_rasch.jpg'
   greetings: 'Welcome'
   description: "My name is Nathan Rasch. I'm a software developer and organizational leader living in Colorado Springs, CO."
-  bio: "Nathan has worked throughout his career as leader, project manager, and software developer.  He has an MBA, BA in Mathematics, and is a Certified ScrumMaster (CSM) and PMI Certified Associate in Project Management (CAPM)."
+  bio: "Nathan has worked throughout his career as a leader, project manager, and software developer.  He has an MBA and BA in Mathematics.  Nathan is also a Certified ScrumMaster (CSM) and PMI Certified Associate in Project Management (CAPM)."
 
 # Contact form setings
 email: nathan@obsidiantech.net
@@ -34,9 +34,9 @@ linkedin: 'nathanrasch'
 # Navigation
 navigation:
   - text: About
-    url: /about/
+    url: /about.html
   - text: Contact Me
-    url: /contact/
+    url: /contact.html
 
 # Required Plugins
 plugins_dir:
