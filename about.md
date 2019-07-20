@@ -4,12 +4,15 @@ title: About
 featured_image: /assets/images/pages/about.jpg
 ---
 
-Daniel Bennett is a senior developer from Vilnius, Lithuania. After graduating from The College with a degree in **Computer Science**, he worked for three small web shops where he honed his development skills and love for JavaScript.
+Nathan Rasch has worked throughout his career as a leader, project manager, and software developer.  he has an MBA in business administration, a BA in Mathematics, is a Certified ScrumMaster (CSM), and a PMI Certified Associate in Project Management (CAPM). He's working in a number of challenging fields such as biopharmaceuticals, banking, and telecommunications.
 
-His work has been recognized by Communication Arts, IBM, How, ID, IdN, AIGA, Effie, Archive, Graphis, AdFed and Rockport. **Net** magazine named him a person to watch in 2018.
+Some of his successful work experiences include:
 
->The world always seems brighter when you’ve just made something that wasn’t there before. <cite>Neil Gaiman</cite>
+* Leadership of Investability’s primary cross-functional software development team.  He effectively led the team from historically missing sprint commitments to a release record of on-time sprint commitment delivery by working to increase team morale and cohesion, removing roadblocks and building relationships with other departments, and putting in place an effective software development and deployment process.
 
-As a hobby, Daniel authors the most influential JavaScript blog in Lithuania with over 100,000 page views a month. He lives in Vilnius with his beautiful wife, two boys and one girl.
+* Single-handed development of a prototype software as a service (SaaS) application in one month which led to the sale of that system for seven-plus clinical drug studies and netted over $2M in sales in the first year.  He then went on to successfully expand the department’s headcount from one to sixteen (including remote and offshore resources) to sustain business growth, add to the product’s feature set, and successfully meet critical client business needs.
 
-*Thank You for reading!*
+
+* At Point of Reference he grew the engineering department’s headcount from two to seven while creating the department’s organizational structure, processes, procedures, best practices, etc.  Nathan also oversaw major upgrades and new feature additions to the organization’s core product offering to attract and retain multiple Fortune 500 customers such as VMware, Lexmark, Amazon Web Services, and Blue Coat Systems.
+
+Nathan is always looking for new and interesting projects, so please feel free to reach out.
