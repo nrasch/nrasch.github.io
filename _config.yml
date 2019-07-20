@@ -4,7 +4,7 @@ description: '404 Clever Blog Title Not Found'
 meta_description: '404 Clever Blog Title Not Found'
 logo: 'assets/images/logo.png'
 favicon: 'assets/images/favicon.ico'
-baseurl: 
+baseurl: https://nrasch.github.io/
 production_url: https://nrasch.github.io/
 disqus: ''
 mailchimp_url: ''
@@ -33,9 +33,9 @@ linkedin: 'nathanrasch'
 # Navigation
 navigation:
   - text: About
-    url: /about/
+    url: /about.html
   - text: Contact Me
-    url: /contact/
+    url: /contact.html
 
 # Required Plugins
 plugins_dir:
