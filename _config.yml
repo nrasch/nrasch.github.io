@@ -33,9 +33,9 @@ linkedin: 'nathanrasch'
 # Navigation
 navigation:
   - text: About
-    url: /about.html
+    url: https://nrasch.github.io/about.html
   - text: Contact Me
-    url: /contact.html
+    url: https://nrasch.github.io/contact.html
 
 # Required Plugins
 plugins_dir:
