@@ -1,7 +1,7 @@
 # Site setings
 name: 'nrasch.github.io'
-description: 'Technical discussions with Nathan Rasch.'
-meta_description: 'Technical discussions with Nathan Rasch.'
+description: '404 Clever Blog Title Not Found'
+meta_description: '404 Clever Blog Title Not Found'
 logo: 'assets/images/logo.png'
 favicon: 'assets/images/favicon.ico'
 baseurl: 
@@ -17,9 +17,9 @@ ga_analytics:
 author:
   name: 'Nathan Rasch'
   image: 'nathan_rasch.jpg'
-  greetings: 'Welcome!'
-  description: "My name is Nathan Rasch. I'm a freelance front-end developer, author and speaker based in Austin, TX. It’s nice to meet you."
-  bio: 'Daniel is a designer, photographer, speaker, author of a couple of books about typography and the founder of photo magazine Curious.'
+  greetings: 'Welcome'
+  description: "My name is Nathan Rasch. I'm a software developer and leader living in Colorado Springs, CO.  "
+  bio: 'Nathan has worked throughout his career as leader, project manager, and software developer.  He has an MBA, a BA in Mathematics, and is a Certified ScrumMaster (CSM) and PMI Certified Associate in Project Management (CAPM).'
 
 # Contact form setings
 email: nathan@obsidiantech.net
@@ -27,16 +27,16 @@ contact_page_description: "Horace theme comes with a contact form built-in. You 
 thankyou_page_description: "Your message has been successfully sent. We will contact you very soon!"
 
 # Social links
-twitter: 'username'
-facebook: 'username'
-github: 'username'
-codepen: 'username'
-dribbble: 'username'
-medium: '@username'
-instagram: 'username'
-pinterest: 'username'
-linkedin: 'username'
-producthunt: '@username'
+twitter: ''
+facebook: ''
+github: 'nrasch'
+codepen: ''
+dribbble: ''
+medium: ''
+instagram: ''
+pinterest: ''
+linkedin: 'nathanrasch'
+producthunt: ''
 
 # Navigation
 navigation:
