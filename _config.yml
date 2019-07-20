@@ -18,7 +18,7 @@ author:
   name: 'Nathan Rasch'
   image: 'nathan_rasch.jpg'
   greetings: 'Welcome'
-  description: "My name is Nathan Rasch. I'm a software developer and leader living in Colorado Springs, CO.  "
+  description: 'My name is Nathan Rasch. I'm a software developer and leader living in Colorado Springs, CO.'
   bio: 'Nathan has worked throughout his career as leader, project manager, and software developer.  He has an MBA, a BA in Mathematics, and is a Certified ScrumMaster (CSM) and PMI Certified Associate in Project Management (CAPM).'
 
 # Contact form setings
@@ -27,23 +27,13 @@ contact_page_description: "Horace theme comes with a contact form built-in. You 
 thankyou_page_description: "Your message has been successfully sent. We will contact you very soon!"
 
 # Social links
-twitter: ''
-facebook: ''
 github: 'nrasch'
-codepen: ''
-dribbble: ''
-medium: ''
-instagram: ''
-pinterest: ''
 linkedin: 'nathanrasch'
-producthunt: ''
 
 # Navigation
 navigation:
   - text: About
     url: /about/
-  - text: Style Guide
-    url: /style-guide/
   - text: Contact Me
     url: /contact/
 
