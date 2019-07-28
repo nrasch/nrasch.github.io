@@ -9,7 +9,7 @@
 	$(document).ready(function(){
 
 		// Responsive video embeds
-		$('.post-content').fitVids();
+		//$('.post-content').fitVids();
 
 		// Scroll to top
 		$('#top-button').on('click', function(e) {
@@ -18,7 +18,7 @@
 			});
 			e.preventDefault();
 		});
-		
+
 		// Sidebar
 		$('#sidebar-show, #sidebar-hide').on('click', function(e){
 			$body.toggleClass('sidebar--opened');

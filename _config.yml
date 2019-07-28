@@ -5,13 +5,12 @@ description: '404 Clever Blog Title Not Found'
 meta_description: '404 Clever Blog Title Not Found'
 logo: 'assets/images/logo.png'
 favicon: 'assets/images/favicon.ico'
-baseurl: 
+baseurl:
 production_url: https://nrasch.github.io
 disqus: ''
-mailchimp_url: ''
 cover_image: bc_1.jpg
 # Add your GA Tracking Id
-ga_analytics: 
+ga_analytics:
 
 
 # Author
