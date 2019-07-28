@@ -6,8 +6,8 @@ meta_description: '404 Clever Blog Title Not Found'
 logo: 'assets/images/logo.png'
 favicon: 'assets/images/favicon.ico'
 baseurl:
-production_url: https://nrasch.github.io
-disqus: ''
+production_url: https://nrasch.github.io/
+disqus: 'nrasch-github-io'
 cover_image: bc_1.jpg
 # Add your GA Tracking Id
 ga_analytics:
