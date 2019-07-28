@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Combining Laravel Policies and FormRequests"
+title:  "Combining Laravel Policies and Form Requests"
 tags: [ Laravel, PHP, Web Development ]
 featured_image_thumbnail: assets/images/posts/2018/12_thumbnail.jpg
 featured_image: assets/images/posts/2018/12.jpg
@@ -18,10 +18,10 @@ As such many of the controllers, views, models, etc. will deal with tasks, repor
 
 ## Assumptions and Prerequisites
 
-This article assumes you have an roles and permissions mechanism in place such as [spatie/laravel-permission](https://github.com/spatie/laravel-permission) or [JosephSilber/bouncer](https://github.com/JosephSilber/bouncer).
+This article assumes you have an roles and permissions mechanism already in place such as [spatie/laravel-permission](https://github.com/spatie/laravel-permission) or [JosephSilber/bouncer](https://github.com/JosephSilber/bouncer).
 
 (Note:  My particular development stack utilizes [spatie/laravel-permission](https://github.com/spatie/laravel-permission), and the code samples below will reflect as such.)
 
-It is also assumed you have access to a recent version of the [Laravel Framework](https://laravel.com) such as v5.8.29.
+It is also assumed you are utilizing a recent version of the [Laravel Framework](https://laravel.com) such as v5.8.29.
 
 If your development stack doesn't match what I have the concepts and ideas will still apply, but you might need to adjust some of the code to comply with your particular set up.
