@@ -14,6 +14,8 @@ The overall goal of this series of write-ups is to explore a number of models pe
 
 The model created in this write-up will be to perform binary classification on a set of images, and output a set of predictions as to whether or not each of those images is a cat or not (hence the binary nature of the model).  We covered the logistics of acquiring and developing an image data set in a [previous write-up](https://github.com/nrasch/Portfolio/tree/master/Machine-Learning/Python/02-ComputerVision-Dataset-Creation), so we'll assume that data set is available and being utilized for this project.
 
+**_Note_**:  You can find the source Jupyter notebook for this post [here](https://github.com/nrasch/Portfolio/blob/master/Machine-Learning/Python/03-ComputerVision-Classification/Classification-01.ipynb).
+
 ## Data Set
 
 In a previous write-up we dealt with the tasks involved in creating an image data set of labeled cat and non-cat pictures.  This write-up will utilize the output of those efforts.  In the `datasets` directory we have an HDF5 archive containing the image data for the model we'll build below.  We can go ahead and examine the contents of the archive:
@@ -721,4 +723,4 @@ print('F-Score: {}'.format(fscore))
 
 ---
 
-  
+**_Note_**:  You can find the source Jupyter notebook for this post [here](https://github.com/nrasch/Portfolio/blob/master/Machine-Learning/Python/03-ComputerVision-Classification/Classification-01.ipynb).
