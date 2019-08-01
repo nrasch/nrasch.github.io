@@ -59,7 +59,7 @@ We'll also implement Laravel's out-of-the-box authentication for future customiz
 
 <pre class="line-numbers">
 <code class="language-bash">$ php artisan make:auth
-$ php artisan db:migrate</code></pre>
+$ php artisan migrate</code></pre>
 
 This will make the following changes:
 
@@ -117,7 +117,7 @@ $ npm install && npm run dev
 Let's start the application and ensure everything is working as expected so far:
 
 <pre class="line-numbers">
-<code class="language-bash">$ php artisan serve
+<code class="language-bash">$ composer dump-autoload && php artisan cache:clear && php artisan serve
 </code></pre>
 
 Once we browse to <code class="language-html">http://127.0.0.1:8000/</code> we should see this familiar screen if everything went correctly:
@@ -133,7 +133,7 @@ Let's test the React functionality at this point now too.  We just need to make 
 * Edit the <code class="language-bash">resources/views/layouts/welcome.blade.php</code> file, and add the following after the list of Laravel `<li>` links:
 
 ```html
-<div id='ReactTest' />
+<div id='example' />
 ```
 
 Then add this code just before the <code class="language-bash"></body></code> tag as shown below:
@@ -158,7 +158,7 @@ When the page is reloaded we should see the following, which indicates that Reac
 And finally we should generate some users to test the authentication as well as set us up for the next write up.  We start by creating a User seeder:
 
 <pre class="line-numbers">
-<code class="language-bash">$php artisan make:seeder UserSeeder
+<code class="language-bash">$ php artisan make:seeder UserSeeder
 </code></pre>
 
 Next, add the following code to the <code class="language-bash">database/seeds/UserSeeder.php</code> file:
@@ -197,7 +197,9 @@ class UserSeeder extends Seeder
     }
 }
 ```
-This will create not only an admin user, but twenty other random users as well.
+This will create not only an admin user, but twenty other random users as well.  
+
+Note that the **_factory(...)_** function in the code above is using the instructions found in the **_database/factories/UserFactory.php_** file to actually create the User objects, populate their attributes, and then save them into the database.
 
 In order to have the seeder populate the database we add the seeder to the <code class="language-bash">database/seeds/DatabaseSeeder.php</code> file:
 
@@ -223,7 +225,7 @@ class DatabaseSeeder extends Seeder
 Now we can utilize the seeder to create a sample of new user accounts with the following command:
 
 <pre class="line-numbers">
-<code class="language-bash">$php artisan db:seed
+<code class="language-bash">$ php artisan db:seed
 </code></pre>
 
 ## Final testing
@@ -242,7 +244,7 @@ We are now ready to log in as the Admin user we created:
 
 We now have a working Laravel application base template that can be utilized to develop further functionality, and that is exactly what we'll do in the next set of write ups.  :)
 
-You can also find the source code for this post [on GitHub](#).
+You can also find the source code for this post [on GitHub](https://github.com/nrasch/AppTemplate/tree/PartOne).
 
 If you have any comments or questions please don't hesitate to reach out.
 
