@@ -10,7 +10,7 @@ hidden: true
 
 In this post we'll create a simple, base Laravel project template that we'll expand upon in future write ups to explore items such as roles and permissions, validation, CRUD via React, and so forth.
 
-You can find the complete source code for this post [on GitHub](#).
+You can find the complete source code for this post [on GitHub](https://github.com/nrasch/AppTemplate/tree/PartOne).
 
 <!--more-->
 
