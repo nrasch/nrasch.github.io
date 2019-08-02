@@ -4,8 +4,8 @@ title:  "Creating a Base Laravel Project Template"
 tags: [ Laravel, PHP, Web Development ]
 featured_image_thumbnail: assets/images/posts/2019/creating_base_laravel_project_template_title_thumbnail.png
 featured_image: assets/images/posts/2019/creating_base_laravel_project_template_title.png
-featured: true
-hidden: true
+featured: false
+hidden: false
 ---
 
 In this post we'll create a simple, base Laravel project template that we'll expand upon in future write ups to explore items such as roles and permissions, validation, CRUD via React, and so forth.
