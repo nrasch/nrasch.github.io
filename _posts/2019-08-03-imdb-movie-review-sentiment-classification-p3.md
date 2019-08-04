@@ -13,7 +13,7 @@ The _overall_ goal of this series is to explore a number of machine learning alg
 The _specific_ goals of this particular post include:
 1. Create a set of word embeddings from the IMDb movie review text utilizing [Word2vec](https://en.wikipedia.org/wiki/Word2vec)
 2. Cluster the embeddings utilizing a K-nearest neighbors algorithm into a set of centroids
-2. Run the models from the [first write-up]({% post_url 2019-08-02-imdb-movie-review-sentiment-classification-p1 %}) against the centroid feature set
+2. Run the models from the [first write-up]({% post_url 2019-08-01-imdb-movie-review-sentiment-classification-p1 %}) against the centroid feature set
 3. Determine if the centroid feature set improves our ability to correctly classify movie review sentiment
 
 <!--more-->
@@ -26,14 +26,14 @@ Bag of Words Meets Bags of Popcorn](https://www.kaggle.com/c/word2vec-nlp-tutori
 
 ### Previous
 Previous entries in this series:
-* [IMDB Movie Review Sentiment Classification - Part One]({% post_url 2019-08-02-imdb-movie-review-sentiment-classification-p1 %})
+* [IMDB Movie Review Sentiment Classification - Part One]({% post_url 2019-08-01-imdb-movie-review-sentiment-classification-p1 %})
   * Creating the baseline model
-* [IMDB Movie Review Sentiment Classification - Part Two]({% post_url 2019-08-03-imdb-movie-review-sentiment-classification-p2 %})
+* [IMDB Movie Review Sentiment Classification - Part Two]({% post_url 2019-08-02-imdb-movie-review-sentiment-classification-p2 %})
   * Utilizing a sparse feature set
 
 # Process
 
-Previously covered [here]({% post_url 2019-08-02-imdb-movie-review-sentiment-classification-p1 %}#Process).
+Previously covered [here]({% post_url 2019-08-01-imdb-movie-review-sentiment-classification-p1 %}#Process).
 
 # Configure notebook, import libraries, and import dataset
 
@@ -145,13 +145,13 @@ df = pd.read_csv(labeledTrainData, sep = '\t', header = 0, quoting = 3)
 
 # Examine the data
 
-Previously covered [here]({% post_url 2019-08-02-imdb-movie-review-sentiment-classification-p1 %}#Examine-the-data).
+Previously covered [here]({% post_url 2019-08-01-imdb-movie-review-sentiment-classification-p1 %}#Examine-the-data).
 
 # Cleaning and preprocessing
 
 ## Load training data
 
-(Previous process justification and methodology also previously covered [here]({% post_url 2019-08-02-imdb-movie-review-sentiment-classification-p1 %}#Cleaning-and-preprocessing).)
+(Previous process justification and methodology also previously covered [here]({% post_url 2019-08-01-imdb-movie-review-sentiment-classification-p1 %}#Cleaning-and-preprocessing).)
 
 First, read in the labeled training data (which we've done before) as well as the unlabeled training data (which is new to this write-up).  The more data we can feed to Word2Vec the better, and this will help the algorithm associate related words more accurately.
 
@@ -862,7 +862,7 @@ And finally, here is the baseline model's performance vs. the 'centroid' model w
 
 <div style="clear: both;"></div>
 
-Similar to the last [last write-up]({% post_url 2019-08-03-imdb-movie-review-sentiment-classification-p2 %}) the work in this notebook was an interesting idea to explore, but ultimately didn't result in an overall performance increase versus the baseline model.  As such this line of exploration will be rejected in favor of keeping the current base line model and accuracy rating as benchmarks moving forward.
+Similar to the last [last write-up]({% post_url 2019-08-02-imdb-movie-review-sentiment-classification-p2 %}) the work in this notebook was an interesting idea to explore, but ultimately didn't result in an overall performance increase versus the baseline model.  As such this line of exploration will be rejected in favor of keeping the current base line model and accuracy rating as benchmarks moving forward.
 
 
 You can find the source Jupyter Notebook on GitHub [here](https://github.com/nrasch/Portfolio/blob/master/Machine-Learning/Python/04-Classic-Datasets/Model-06.p3.ipynb).

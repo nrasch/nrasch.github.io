@@ -12,7 +12,7 @@ The _overall_ goal of this series is to explore a number of machine learning alg
 
 The _specific_ goals of this particular post include:
 1. Create a sparser feature set by removing words not directly related to sentiment
-2. Run the models from the [last write-up]({% post_url 2019-08-02-imdb-movie-review-sentiment-classification-p1 %}) against the new feature set
+2. Run the models from the [last write-up]({% post_url 2019-08-01-imdb-movie-review-sentiment-classification-p1 %}) against the new feature set
 3. Determine if the new feature set improves our ability to correctly classify movie review sentiment
 
 <!--more-->
@@ -25,12 +25,12 @@ Bag of Words Meets Bags of Popcorn](https://www.kaggle.com/c/word2vec-nlp-tutori
 
 ### Previous
 Previous entries in this series:
-* [IMDB Movie Review Sentiment Classification - Part One]({% post_url 2019-08-02-imdb-movie-review-sentiment-classification-p1 %})
+* [IMDB Movie Review Sentiment Classification - Part One]({% post_url 2019-08-01-imdb-movie-review-sentiment-classification-p1 %})
   * Creating the baseline model
 
 # Process
 
-Previously covered [here]({% post_url 2019-08-02-imdb-movie-review-sentiment-classification-p1 %}#process).
+Previously covered [here]({% post_url 2019-08-01-imdb-movie-review-sentiment-classification-p1 %}#process).
 
 # Configure notebook, import libraries, and import dataset
 
@@ -119,11 +119,11 @@ df = pd.read_csv(labeledTrainData, sep = '\t', header = 0, quoting = 3)
 
 # Examine the data
 
-Previously covered [here]({% post_url 2019-08-02-imdb-movie-review-sentiment-classification-p1 %}#examine-the-data)
+Previously covered [here]({% post_url 2019-08-01-imdb-movie-review-sentiment-classification-p1 %}#examine-the-data)
 
 # Cleaning and preprocessing
 
-Process justification andmethodology previously covered [here]({% post_url 2019-08-02-imdb-movie-review-sentiment-classification-p1 %}#cleaning-and-preprocessing)
+Process justification andmethodology previously covered [here]({% post_url 2019-08-01-imdb-movie-review-sentiment-classification-p1 %}#cleaning-and-preprocessing)
 
 Define a 'cleaning' function, and clean the training set:
 
@@ -161,9 +161,9 @@ assert(len(df) == (len(cleanReviews)))
 
 # Bag-of-words feature creation
 
-Initial discussion of the **_bag-of-words_** algorithm was previously covered [here]({% post_url 2019-08-02-imdb-movie-review-sentiment-classification-p1 %}#bag-of-words-feature-creation)
+Initial discussion of the **_bag-of-words_** algorithm was previously covered [here]({% post_url 2019-08-01-imdb-movie-review-sentiment-classification-p1 %}#bag-of-words-feature-creation)
 
-Next, in the [first write-up]({% post_url 2019-08-02-imdb-movie-review-sentiment-classification-p1 %}) of this series we examined a sample review--index 108--during the analysis, cleaning, and preprocessing.  We'll post it here again for reference:
+Next, in the [first write-up]({% post_url 2019-08-01-imdb-movie-review-sentiment-classification-p1 %}) of this series we examined a sample review--index 108--during the analysis, cleaning, and preprocessing.  We'll post it here again for reference:
 
 
 ```python
@@ -185,7 +185,7 @@ It is doubtful this series of words will give the model any 'insights' into if t
 question one sees movie bad necessarily movie bad get made even see awful
 ```
 
-In order to explore this idea let's load a sentiment lexicon into the notebook, and then remove any 'noise' words not found in the sentiment lexicon from the review texts.  We'll then run the 'de-noised' review texts through the same models as we did in the [previous write-up]({% post_url 2019-08-02-imdb-movie-review-sentiment-classification-p1 %}), and see if we gain any improvements in speed and/or accuracy.
+In order to explore this idea let's load a sentiment lexicon into the notebook, and then remove any 'noise' words not found in the sentiment lexicon from the review texts.  We'll then run the 'de-noised' review texts through the same models as we did in the [previous write-up]({% post_url 2019-08-01-imdb-movie-review-sentiment-classification-p1 %}), and see if we gain any improvements in speed and/or accuracy.
 
 ##### Download the sentiment lexicon
 
@@ -283,7 +283,7 @@ sparseCleanReviews[108]
 
 ##### CountVectorizer application
 
-We'll now simply repeat the CountVectorizer steps as we did in the [first write-up]({% post_url 2019-08-02-imdb-movie-review-sentiment-classification-p1 %}) to create the 'bags-of-words' numeric representation of the 'de-noised' reviews suitable for the machine learning model.
+We'll now simply repeat the CountVectorizer steps as we did in the [first write-up]({% post_url 2019-08-01-imdb-movie-review-sentiment-classification-p1 %}) to create the 'bags-of-words' numeric representation of the 'de-noised' reviews suitable for the machine learning model.
 
 
 ```python
@@ -610,7 +610,7 @@ plt.show()
 
 ![png](assets/images/posts/2019/output_47_0.png)
 
-Once the results of these models are compared to the training results in the [first write-up]({% post_url 2019-08-02-imdb-movie-review-sentiment-classification-p1 %}) of this series we can see we lost performance for every model.  We did gain; however, a boost in speed at least for the LR model.  It completed in a matter of minutes.  The SVM model did not fair so well; it took almost 5 hours for it to complete.
+Once the results of these models are compared to the training results in the [first write-up]({% post_url 2019-08-01-imdb-movie-review-sentiment-classification-p1 %}) of this series we can see we lost performance for every model.  We did gain; however, a boost in speed at least for the LR model.  It completed in a matter of minutes.  The SVM model did not fair so well; it took almost 5 hours for it to complete.
 
 Overall I'd say this idea--at least for this set of models--is a bust, and we'll retain our earlier work as the baseline for comparison.  
 
@@ -811,7 +811,7 @@ While removing 'noisy' terms not directly related to sentiment was an interestin
 In this write-up we accomplished the following:
 
 1. Created a sparser feature set by removing words not directly related to sentiment
-2. Ran the models from the [last write-up]({% post_url 2019-08-02-imdb-movie-review-sentiment-classification-p1 %}) against the new, sparser feature set
+2. Ran the models from the [last write-up]({% post_url 2019-08-01-imdb-movie-review-sentiment-classification-p1 %}) against the new, sparser feature set
 3. Determined that the new feature set did not improve our ability to correctly classify movie review sentiment
 
 For reference here is the baseline model:

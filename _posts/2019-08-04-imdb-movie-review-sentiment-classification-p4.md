@@ -13,7 +13,7 @@ The _overall_ goal of this series is to explore a number of machine learning alg
 The _specific_ goals of this particular post include:
 1. Create a set of document vectors from the IMDb movie review text utilizing [Doc2Vec](https://radimrehurek.com/gensim/models/doc2vec.html)
 2. Tune and train a number of Doc2Vec models on the movie review corpus
-2. Run the models from the [first write-up]({% post_url 2019-08-02-imdb-movie-review-sentiment-classification-p1 %}) against the Doc2Vec feature set outputs
+2. Run the models from the [first write-up]({% post_url 2019-08-01-imdb-movie-review-sentiment-classification-p1 %}) against the Doc2Vec feature set outputs
 3. Determine if utilizing Doc2Vec improves our ability to correctly classify movie review sentiment
 
 <!--more-->
@@ -26,17 +26,17 @@ Bag of Words Meets Bags of Popcorn](https://www.kaggle.com/c/word2vec-nlp-tutori
 
 ### Previous
 Previous entries in this series:
-* [IMDB Movie Review Sentiment Classification - Part One]({% post_url 2019-08-02-imdb-movie-review-sentiment-classification-p1 %})
+* [IMDB Movie Review Sentiment Classification - Part One]({% post_url 2019-08-01-imdb-movie-review-sentiment-classification-p1 %})
   * Creating the baseline model
-* [IMDB Movie Review Sentiment Classification - Part Two]({% post_url 2019-08-03-imdb-movie-review-sentiment-classification-p2 %})
+* [IMDB Movie Review Sentiment Classification - Part Two]({% post_url 2019-08-02-imdb-movie-review-sentiment-classification-p2 %})
   * Utilizing a sparse feature set
-* [IMDB Movie Review Sentiment Classification - Part Three]({% post_url 2019-08-04-imdb-movie-review-sentiment-classification-p3 %})
+* [IMDB Movie Review Sentiment Classification - Part Three]({% post_url 2019-08-03-imdb-movie-review-sentiment-classification-p3 %})
   * Utilizing world embeddings and K-nearest neighbors analysis
 
 
 # Process
 
-Previously covered [here]({% post_url 2019-08-02-imdb-movie-review-sentiment-classification-p1 %}#Process).
+Previously covered [here]({% post_url 2019-08-01-imdb-movie-review-sentiment-classification-p1 %}#Process).
 
 # Configure notebook, import libraries, and import dataset
 
@@ -190,13 +190,13 @@ def makeWhisker(results):
 
 # Examine the data
 
-Previously covered [here]({% post_url 2019-08-02-imdb-movie-review-sentiment-classification-p1 %}#Examine-the-data).
+Previously covered [here]({% post_url 2019-08-01-imdb-movie-review-sentiment-classification-p1 %}#Examine-the-data).
 
 # Cleaning and preprocessing
 
 ## Load labeled training data
 
-(Previous process justification and methodology also previously covered [here]({% post_url 2019-08-02-imdb-movie-review-sentiment-classification-p1 %}#Cleaning-and-preprocessing).)
+(Previous process justification and methodology also previously covered [here]({% post_url 2019-08-01-imdb-movie-review-sentiment-classification-p1 %}#Cleaning-and-preprocessing).)
 
 We need to load the labeled training data exactly as we've done in previous write-ups:
 
@@ -982,7 +982,7 @@ In this write-up we accomplished the following:
 
 1. Created a set of document vectors from the IMDb movie review text utilizing [Doc2Vec](https://radimrehurek.com/gensim/models/doc2vec.html)
 2. Tuned and trained a number of Doc2Vec models on the movie review corpus
-2. Ran the models from the [first write-up]({% post_url 2019-08-02-imdb-movie-review-sentiment-classification-p1 %}) against the Doc2Vec feature set outputs
+2. Ran the models from the [first write-up]({% post_url 2019-08-01-imdb-movie-review-sentiment-classification-p1 %}) against the Doc2Vec feature set outputs
 3. Evaluated if utilizing Doc2Vec improved our ability to correctly classify movie review sentiment
 
 
