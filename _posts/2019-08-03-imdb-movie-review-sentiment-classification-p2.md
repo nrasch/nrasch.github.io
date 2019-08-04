@@ -161,7 +161,7 @@ assert(len(df) == (len(cleanReviews)))
 
 # Bag-of-words feature creation
 
-Initial discussion of the `bag-of-words` algorithm was previously covered [here]({% post_url 2019-08-02-imdb-movie-review-sentiment-classification-p1 %}#bag-of-words-feature-creation)
+Initial discussion of the **_bag-of-words_** algorithm was previously covered [here]({% post_url 2019-08-02-imdb-movie-review-sentiment-classification-p1 %}#bag-of-words-feature-creation)
 
 Next, in the [first write-up]({% post_url 2019-08-02-imdb-movie-review-sentiment-classification-p1 %}) of this series we examined a sample review--index 108--during the analysis, cleaning, and preprocessing.  We'll post it here again for reference:
 
