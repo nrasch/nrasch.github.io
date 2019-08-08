@@ -4,8 +4,8 @@ title:  "Creating a Base Laravel Project Template Part Three"
 tags: [ Laravel, PHP, Web Development ]
 featured_image_thumbnail: assets/images/posts/2019/creating_base_laravel_project_template_title_thumbnail.png
 featured_image: assets/images/posts/2019/creating_base_laravel_project_template_title.png
-featured: false
-hidden: false
+featured: true
+hidden: true
 ---
 
 In this post we continue work on our Application Template by formalizing the login/logout actions as well as adding roles and permissions with [Spatie](https://github.com/spatie/laravel-permission).

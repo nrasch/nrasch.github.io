@@ -4,8 +4,8 @@ title:  "Creating a Base Laravel Project Template Part Two"
 tags: [ Laravel, PHP, Web Development ]
 featured_image_thumbnail: assets/images/posts/2019/creating_base_laravel_project_template_title_thumbnail.png
 featured_image: assets/images/posts/2019/creating_base_laravel_project_template_title.png
-featured: true
-hidden: true
+featured: false
+hidden: false
 ---
 
 In this post we continue work on our Application Template by applying a [minimalist bootstrap theme](https://github.com/BlackrockDigital/startbootstrap-simple-sidebar) to the user interface.  We also explore the feasibility of adding additional assets to the template such as [Font Awesome](https://fontawesome.com/) and [DataTables](https://www.datatables.net/).
