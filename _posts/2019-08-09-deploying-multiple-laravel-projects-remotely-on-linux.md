@@ -4,8 +4,8 @@ title:  "Deploying Multiple Laravel Projects Remotely on Linux"
 tags: [ Laravel, PHP, Web Development, Linux ]
 featured_image_thumbnail: assets/images/posts/2019/deploying-multiple-laravel-projects-remotely-on-linux_thumbnail.png
 featured_image: assets/images/posts/2019/deploying-multiple-laravel-projects-remotely-on-linux_title.png
-featured: true
-hidden: true
+featured: false
+hidden: false
 ---
 
 In this post we explore what it takes to provision a remote Linux server, and then deploy one or more Laravel project applications to it.  

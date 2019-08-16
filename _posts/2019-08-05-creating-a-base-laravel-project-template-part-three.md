@@ -163,6 +163,7 @@ Next we need to create the login view.
 
 Create a new file called **_resources/views/layouts/auth.blade.php_** and add the following code to it:
 
+{% raw %}
 ```html
 <!doctype html>
 <html lang="{{ config('app.locale') }}">
@@ -198,6 +199,7 @@ Create a new file called **_resources/views/layouts/auth.blade.php_** and add th
     </body>
 </html>
 ```
+{% endraw %}
 
 This will serve as the layout for any login or logout forms we need to develop.
 
@@ -205,6 +207,7 @@ This will serve as the layout for any login or logout forms we need to develop.
 
 To create the login form edit the file **_resources/views/auth/login.blade.php_** and replace its contents with the following code:
 
+{% raw %}
 ```html
 @extends('layouts.auth')
 
@@ -272,6 +275,7 @@ To create the login form edit the file **_resources/views/auth/login.blade.php_*
 <!-- END Page Content -->
 @endsection
 ```
+{% endraw %}
 
 This creates the form the user will fill out and submit to authenticate against the application.  It includes the CSRF token as well any feedback on validation errors that might have occurred.
 
@@ -281,6 +285,7 @@ And finally we need to enable the user to logout.  We will add an element to the
 
 First we need to add the jQuery that will submit the logout form.  Start by editing the **_resources/views/layouts/app.blade.php_** file, and modify the javascript at the end of the page like so:
 
+{% raw %}
 ```html
 <!-- Scripts -->
 <!-- Move this here and remove 'defered', or you'll have a jQuery not defined error!
@@ -302,6 +307,7 @@ See https://stackoverflow.com/questions/51595843/laravel-5-webpack-jquery-is-not
 
 @yield('js_after')
 ```
+{% endraw %}
 
 Now when the user clicks the logout link in the navigation bar the hidden logout form will be submitted.
 
@@ -412,6 +418,7 @@ $ php artisan make:seed RoleSeeder
 
 Next edit the **_database/seeds/PermissionSeeder.php_** file, and replace its contents with the following code:
 
+{% raw %}
 ```php
 <?php
 
@@ -443,12 +450,14 @@ class PermissionSeeder extends Seeder
       Permission::create(['name' => 'manage_users']);
     }
 }
-```  
+```
+{% endraw %}
 
 #### database/seeds/RoleSeeder.php
 
 Now edit the **_database/seeds/RoleSeeder.php_** file, and replace its contents with the following code:
 
+{% raw %}
 ```php
 <?php
 
@@ -473,6 +482,7 @@ class RoleSeeder extends Seeder
     }
 }
 ```
+{% endraw %}
 
 This creates two roles, administrator and user, and then assigns the **_manage_users_** permission to the **_administator_** role.
 
@@ -480,6 +490,7 @@ This creates two roles, administrator and user, and then assigns the **_manage_u
 
 We also need to ensure the new seeders we've created run, so let's add them to the **_database/seeds/DatabaseSeeder.php_** file:
 
+{% raw %}
 ```php
 <?php
 
@@ -501,6 +512,7 @@ class DatabaseSeeder extends Seeder
     }
 }
 ```
+{% endraw %}
 
 Notice we place the permission and role seeders *before* the user seeder, because we want the permissions and roles to exist before we try to assign them.
 
@@ -508,6 +520,7 @@ Notice we place the permission and role seeders *before* the user seeder, becaus
 
 Our second to last code edit is to modify the **_database/seeds/UserSeeder.php_** file to actually assign the new permissions and roles to the users we created:
 
+{% raw %}
 ```php
 <?php
 
@@ -546,6 +559,7 @@ class UserSeeder extends Seeder
   }
 }
 ```  
+{% endraw %}
 
 Notice how we make calls to the **_$user->assignRole_** method in order to apply our new permissions and roles.
 
