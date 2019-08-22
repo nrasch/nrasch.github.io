@@ -4,8 +4,8 @@ title:  "Creating a Dashboard with Laravel, React, and Highcharts"
 tags: [ Laravel, PHP, Web Development, React, Highcharts ]
 featured_image_thumbnail: assets/images/posts/2019/creating-a-dashboard-with-laravel-react-and-highcharts_thumbnail.png
 featured_image: assets/images/posts/2019/creating-a-dashboard-with-laravel-react-and-highcharts_title.png
-featured: true
-hidden: true
+featured: false
+hidden: false
 ---
 
 In this post we explore creating a dashboard utilizing [Laravel](https://laravel.com/), [React](https://reactjs.org/), and [Highcharts](https://www.highcharts.com/).
@@ -117,10 +117,13 @@ We'll start by adding the route for the React single page application (SPA):
 Edit the **_routes/web.php_** file and make the following changes:
 
 ```php
+Route::get('/charts/get_sales', 'ChartController@getSales');
+Route::get('/charts/get_categories', 'ChartController@getCategories');
+Route::get('/charts/get_rental_volume', 'ChartController@getRentalVolume');
 Route::get('/charts', 'ChartController@index')->name('charts');
 ```
 
-This will direct all **_/charts_** traffic to the **_ChartController@index_** method which will render the view that in turn loads the React SPA.
+This will direct all **_/charts_** traffic to the **_ChartController@index_** method which will render the view that in turn loads the React SPA.  We also add a number of pseudo api calls, **_/get_sales_**, **_/get_categories_**, etc., to the route, which we'll utilize to return data to the React components later on.
 
 ### Navigation menu element
 
@@ -356,7 +359,7 @@ This controller is responsible for not only returning the view that renders the 
 
 Since there is a lot going on in this controller let's examine some highlights:
 
-#### The `__construct()` method
+#### The **_construct()_** method
 
 {% raw %}
 ```php
@@ -451,7 +454,7 @@ private function prepData($collection, $category_column, $pluck_column, $pluck_v
 ```
 {% endraw %}
 
-This is a helper method to made our code a little [DRYer](https://en.wikipedia.org/wiki/Don%27t_repeat_yourself).  It takes the collection object returned from the query and converts it into a structure directly usable by the Highchart series object.  Assuming your are running this locally you can browse to <http://localhost:8080/charts/get_sales> to see how the helper has structured the data and the JSON is structured for the annual sales chart's usage:
+This is a helper method to made our code a little [DRYer](https://en.wikipedia.org/wiki/Don%27t_repeat_yourself).  It takes the collection object returned from the query and converts it into a structure directly usable by the Highchart series object.  Assuming your are running this locally you can browse to <http://localhost:8080/charts/get_sales> to see how the helper has structured the data and the JSON for the annual sales chart's usage:
 
 ```json
 {"data":
@@ -475,11 +478,37 @@ This is a helper method to made our code a little [DRYer](https://en.wikipedia.o
 }
 ```
 
-This can be fed directly to Highcharts with no processing required on the client side.
+This can be fed directly into Highcharts with no processing required on the client side.
+
+### Create the Laravel view
+
+Next we need to create the Laravel blade file that will be shown to the user when they browse to the **_/charts_** URL.  Edit the **_resources/views/charts.blade.php_** file and add the following:
+
+{% raw %}
+```php
+@extends('layouts.app')
+
+@section('content')
+  <div class="container-fluid">
+    <div class="mt-5" id="react-charts" />
+  </div>
+@endsection
+
+@section('js_after')
+  <script type="text/javascript">
+    $(document).ready(function() {
+        //
+    } );
+  </script>
+@endsection
+```
+{% endraw %}
+
+As can be seen the only job of this file is to provide a named DIV element for the React application to attach to and then load in on.  We also provided a placeholder for any custom javascript we want executed when the page loads.
 
 ### Add React SPA to Laravel mix
 
-The last thing we need to do on the Laravel side is include the React SPA into our [Laravel mix](https://laravel.com/docs/5.8/mix) directives.  Edit the **_resources/js/app.js_** file and add the following:
+The last thing we need to do on the Laravel side of things is to include the React SPA into our [Laravel mix](https://laravel.com/docs/5.8/mix) directives.  Edit the **_resources/js/app.js_** file and add the following:
 
 ```php
 require('./components/Charts');
@@ -487,7 +516,9 @@ require('./components/Charts');
 
 This will ensure our SPA code and assets are included in the compiled **_js/app.js_** file.
 
-That should be the end of things we need to do in Laravel, and from here on out 99% of our work will be creating the React javascript assets.
+That should be the end of our Laravel tasks, and from here on out the rest of our work will be creating the React javascript assets.
+
+---
 
 ## Develop React assets
 
