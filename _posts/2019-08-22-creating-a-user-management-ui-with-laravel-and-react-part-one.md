@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Creating a User Manager with Laravel and React - Part One"
+title:  "Creating a User Management UI with Laravel and React - Part One"
 tags: [ Laravel, PHP, Web Development, React ]
 featured_image_thumbnail: assets/images/posts/2019/creating-a-user-manager-with-laravel-and-react_thumbnail.png
 featured_image: assets/images/posts/2019/creating-a-user-manager-with-laravel-and-react_title.png
@@ -8,7 +8,7 @@ featured: true
 hidden: true
 ---
 
-In this first post of the series we create the index functionality for a [CRUD](https://en.wikipedia.org/wiki/Create,_read,_update_and_delete) based User manager single page application (SPA) utilizing [Laravel](https://laravel.com/) and [React](https://reactjs.org/).
+In this first post of the series we create the index functionality for a [CRUD](https://en.wikipedia.org/wiki/Create,_read,_update_and_delete) based User management single page application (SPA) utilizing [Laravel](https://laravel.com/) and [React](https://reactjs.org/).
 
 <!--more-->
 
@@ -873,7 +873,7 @@ Once that's finished browse to your Laravel application, click the `Users` link 
 
 ## Summary
 
-This post has covered the first step to creating a User manager SPA utilizing Laravel and React.  In the next part of the series we'll explore adding the capability to create new user accounts, and have them saved to the database.
+This post has covered the first step to creating a User management SPA utilizing Laravel and React.  In the next part of the series we'll explore adding the capability to create new user accounts, and have them saved to the database.
 
 You can find the source code for this post [here](https://github.com/nrasch/AppTemplate/tree/ReactUseManager_PartOne).
 
