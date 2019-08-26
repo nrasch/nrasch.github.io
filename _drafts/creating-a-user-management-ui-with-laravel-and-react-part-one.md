@@ -1,14 +1,14 @@
 ---
 layout: post
-title:  "Creating a User Management UI with Laravel and React - Part One"
+title:  "Creating a User Management UI with Laravel and React - Part Two"
 tags: [ Laravel, PHP, Web Development, React ]
 featured_image_thumbnail: assets/images/posts/2019/creating-a-user-manager-with-laravel-and-react_thumbnail.png
 featured_image: assets/images/posts/2019/creating-a-user-manager-with-laravel-and-react_title.png
-featured: true
-hidden: true
+featured: false
+hidden: false
 ---
 
-In this first post of the series we create the index functionality for a [CRUD](https://en.wikipedia.org/wiki/Create,_read,_update_and_delete) based user management single page application (SPA) utilizing [Laravel](https://laravel.com/) and [React](https://reactjs.org/).
+In this second post of the series we develop the 'create new user' functionality for a [CRUD](https://en.wikipedia.org/wiki/Create,_read,_update_and_delete) based user management single page application (SPA) utilizing [Laravel](https://laravel.com/) and [React](https://reactjs.org/).
 
 <!--more-->
 
@@ -21,14 +21,25 @@ For reference here are the other posts in the series:
 
 ## Prerequisites and assumptions
 
-For this post I assume you're using the Application Template created in previous posts.  You can find the series here:
+For this discussion I assume you've followed the instructions in the [first post]({% post_url 2019-08-22-creating-a-user-management-ui-with-laravel-and-react-part-one %}), and we continue by building on what we did previously.
 
-* [Creating a Base Laravel Project Template Part One]({% post_url 2019-07-26-creating-a-base-laravel-project-template %})
-* [Deploying Multiple Laravel Projects Remotely on Linux]({% post_url 2019-08-09-deploying-multiple-laravel-projects-remotely-on-linux %})
+You can also find the source code for this post [here](https://github.com/nrasch/AppTemplate/tree/ReactUserManager_PartTwo).
 
-If this isn't the case you'll likely need to slightly modify some of the commands below to match your setup.
+## Before we begin
 
-You can also find the source code for this post [here](https://github.com/nrasch/AppTemplate/tree/ReactUserManager_PartOne).
+There is a lot going on this post as we'll soon see.  As such it may be best to view the source code first, and then return to this document for commentary on the various components.  Also, for reference, here are all the files we've either modified or created for this post:
+
+* routes/web.php
+* app/Http/Controllers/UserController.php
+* app/Http/Requests/UserFormRequest.php
+
+* resources/js/components/Index.js
+* resources/js/components/CreateForm.js
+* resources/js/components/FlashMessage.js
+* resources/js/components/FormModal.js
+* resources/js/components/TableActions.js
+
+The good news; however, is that with all of this done the next two parts in the series, editing and deleting, should be much simpler.
 
 With that out of the way let's get started!
 
@@ -36,74 +47,36 @@ With that out of the way let's get started!
 
 To start we'll create the Laravel assets needed to support the React components.
 
-### Database
-
-Let's go ahead and setup the database.  We'll utilize MySQL in this instance.  Start by executing the command **_sudo mysql_** on the command line and enter the following statements:
-
-```bash
-CREATE DATABASE user_manager;
-GRANT ALL PRIVILEGES ON user_manager.* TO 'app_template'@'localhost';
-FLUSH PRIVILEGES;
-quit;
-```
-
-Next ensure the Laravel **_.env_** file is configured to work with the new database:
-
-```bash
-APP_NAME='Application Template - React User Manager'
-APP_ENV=local
-APP_KEY=base64:WVOLcnrIHJebzm3WOexSohpDxYN/3tlMx4YnGss65FY=
-APP_DEBUG=true
-APP_URL=http://localhost
-
-LOG_CHANNEL=stack
-
-DB_CONNECTION=mysql
-DB_HOST=127.0.0.1
-DB_PORT=3306
-DB_DATABASE=user_manager
-DB_USERNAME=app_template
-DB_PASSWORD=!app_template!
-```
-
-And finally we want to apply the migrations and seed the database:
-
-```bash
-php artisan migrate:refresh --seed
-```
-
 ### Routing
 
-Next we'll add the route for the React single page application (SPA):
+First we'll add a new route for the React single page application (SPA) dealing with new user creation.
 
 Edit the **_routes/web.php_** file and make the following changes:
 
 ```php
+<?php
+
+// Default route
+Route::get('/', function () {
+    return redirect( route('home'));
+});
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
 Route::get('/get_users', 'UserController@getUsers');
+Route::post('/create_user', 'UserController@store');
 Route::get('/users', 'UserController@index')->name('users');
 ```
 
-This will direct all **_/users_** traffic to the **_UserController@index_** method which will render the view that in turn loads the React SPA.  We also add a pseudo api call, **_/get_users_**, to the route, which we'll utilize to return data to the React components later on.
+We added a new route, `/create_user`, which accepts a POST request.  This route will handle the actions that need to take place when the create new user form is submitted via React to the Laravel back end.
 
-### Navigation menu element
+We chose to add this new route as a POST request, because we'd like to follow Laravel's resource controller action standards ([reference](https://laravel.com/docs/5.8/controllers#resource-controllers)).
 
-Let's also add a navigation item to the left-hand navigation bar.  Edit the **_resources/views/components/left_nav.blade.php_** file and make the following changes:
+### app/Http/Controllers/UserController.php
 
-```php
-<a href="/users" class="list-group-item list-group-item-action bg-light"><i class="fas fa-users mr-2"></i>Users</a>
-```
-
-This will ensure users can find and browse to our new React SPA.
-
-### Create the UserController object
-
-Next we need to create the controller that will render the view containing the React SPA.  From the command line:
-
-```bash
-php artisan make:controller UserController --model=User
-```
-
-Once that's finished edit the new controller file **_app/Http/Controllers/UserController.php_**, and modify its contents to the following:
+Let's update the user controller next.  Edit the `app/Http/Controllers/UserController.php` file and add the following code:
 
 {% raw %}
 ```php
@@ -113,6 +86,8 @@ namespace App\Http\Controllers;
 
 use App\User;
 use Illuminate\Http\Request;
+use Spatie\Permission\Models\Role;
+use App\Http\Requests\UserFormRequest;
 
 class UserController extends Controller
 {
@@ -127,46 +102,27 @@ class UserController extends Controller
 	}
 
 	/**
-	* Show the form for creating a new resource.
-	*
-	* @return \Illuminate\Http\Response
-	*/
-	public function create()
-	{
-		//
-	}
-
-	/**
 	* Store a newly created resource in storage.
 	*
-	* @param  \Illuminate\Http\Request  $request
-	* @return \Illuminate\Http\Response
+	* @param App\Http\Requests\UserFormRequest $request
+	* @return \Illuminate\Http\JsonResponse
 	*/
-	public function store(Request $request)
+	public function store(UserFormRequest $request)
 	{
-		//
-	}
+		// Create the user based on request param values
+		$user = User::create($request->all());
 
-	/**
-	* Display the specified resource.
-	*
-	* @param  \App\User  $user
-	* @return \Illuminate\Http\Response
-	*/
-	public function show(User $user)
-	{
-		//
-	}
+		// Assign role(s) to user
+		$roles = $request->input('roles') ? $request->input('roles') : [];
+		$user->assignRole($roles);
 
-	/**
-	* Show the form for editing the specified resource.
-	*
-	* @param  \App\User  $user
-	* @return \Illuminate\Http\Response
-	*/
-	public function edit(User $user)
-	{
-		//
+		// Create response to be returned to the view
+		$response['result']['type'] = 'success';
+		$response['result']['message'] = 'The user was successfully created!';
+		$response['data'] = $user->__toString();
+
+		// Return JSON response
+		return response()->json($response);
 	}
 
 	/**
@@ -195,7 +151,6 @@ class UserController extends Controller
 	/**
 	* Fetch and return a JSON array of Users
 	*
-	* @param  \App\User  $user
 	* @return \Illuminate\Http\JsonResponse
 	*/
 	public function getUsers()
@@ -212,96 +167,176 @@ class UserController extends Controller
 		// Return JSON response
 		return response()->json(['data' => $users]);
 	}
-
 }
-
 ```
 {% endraw %}
 
-This controller is responsible for not only returning the view that renders the React SPA, but also for gathering and formatting the data required by the view.
+We've removed much of the boiler plate code that Laravel generates, and added logic to support the React front end views.  We won't cover the code we added last post again, but we'll review what we've added since then.
 
-Most of this code in this controller is boilerplate, but don't worry we'll add more to it as we go.  The the two changes we did make to the boilerplate code are:
-
-#### The **_index()_** method
+#### The **_store()_** method
 
 {% raw %}
 ```php
-	public function index()
-	{
-		return view('users');
-	}
-```
-{% endraw %}
-
-This method simply returns the **_resources/views/users.blade.php_** review which in turn loads the React SPA.
-
-#### The **_getUsers()_** method
-
-{% raw %}
-```php
-public function getUsers()
+public function store(UserFormRequest $request)
 {
-	// Use 'with' option to enable eager loading for the user roles
-	$users = User::with('roles')->get();
+	// Create the user based on request param values
+	$user = User::create($request->all());
 
-	// Uncomment line below to simulate no data returned
-	//$users = array();
+	// Assign role(s) to user
+	$roles = $request->input('roles') ? $request->input('roles') : [];
+	$user->assignRole($roles);
 
-	// We have a sleep here so we can observe the loading overlay in the view
-	sleep(1);
+	// Create response to be returned to the view
+	$response['result']['type'] = 'success';
+	$response['result']['message'] = 'The user was successfully created!';
+	$response['data'] = $user->__toString();
 
 	// Return JSON response
-	return response()->json(['data' => $users]);
+	return response()->json($response);
 }
 ```
 {% endraw %}
 
-This method pulls a list of all users from the database, pauses for one second to simulate a data fetching delay, and then returns the results as JSON.
+First, this method utilizes a `UserFormRequest` Laravel form request object as a parameter to the method to encapsulate form validation.  More to follow on this below.,,,
 
-Assuming your are running this locally you can browse to <http://localhost:8080/get_users> to see an example of what the method would return:
+Next the method creates a new user which is populated from the validated request form data, assigns the selected role(s) to the new user object, and then creates the JSON response which is returned to the view.
 
-![Get users method output example](assets/images/posts/2019/get-users-json-example.png)
+Note that if validation fails then Laravel will take care of returning a 422 status response along with whatever validation rules failed to the view.  Later on, when we develop the React components, we'll display these 'flash' messages to the user in the user interface (UI).
 
-### Create the Laravel view
+### app/Http/Requests/UserFormRequest.php
 
-Next we need to create the Laravel blade file that will be shown to the user when they browse to the **_/users_** URL.  Edit the **_resources/views/users.blade.php_** file and add the following:
+Next let's create the `UserFormRequest` object called in the controller to validate the user's input.  Edit the `app/Http/Requests/UserFormRequest.php` file and add the following code:
 
 {% raw %}
 ```php
-@extends('layouts.app')
+<?php
 
-@section('content')
-		<!-- React User manager  -->
-		<div class="container-fluid">
-				<div class="mt-5" id="users" />
-		</div>
-@endsection
+namespace App\Http\Requests;
 
-@section('js_after')
-	<script type="text/javascript">
-		$(document).ready(function() {
-				//
-		} );
-	</script>
-@endsection
+use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Auth;
+
+class UserFormRequest extends FormRequest
+{
+	/**
+	 * Determine if the user is authorized to make this request.
+	 *
+	 * @return bool
+	 */
+	public function authorize()
+	{
+		return Auth::user()->can('manage_users');
+	}
+
+	/**
+	 * Get the validation rules that apply to the request.
+	 *
+	 * @return array
+	 */
+	public function rules()
+	{
+		// Define general rules that will apply to all request types
+		$rules = [
+			'name' => 'required',
+			'roles' => 'required',
+		];
+
+		// Creating a new record
+		if ($this->isMethod('post')) {
+			$rules = array_merge($rules,
+				[
+					'email' => 'required|email|unique:users,email',
+					'password' => 'required|confirmed',
+				]
+			);
+		}
+		// Updating an existing record
+		elseif ($this->isMethod('put')) {
+			$rules = array_merge($rules,
+				[
+					'email' => [
+							'required',
+							'email',
+							Rule::unique('users')->ignore($this->route('id')),
+					],
+					'password' => 'sometimes|confirmed',
+				]
+			);
+		}
+		// Return false for any other method
+		else {
+			return false;
+		}
+
+		return $rules;
+	}
+}
 ```
 {% endraw %}
 
-As can be seen the only job of this file is to provide a named DIV element for the React application to attach to and then load in on.  We also provided a placeholder for any custom javascript we want executed when the page loads.
+Let's briefly examine the two methods in this class:
 
-### Add React SPA to Laravel mix
+#### The **_authorize()_** method
 
-The last thing we need to do on the Laravel side of things is to include the React SPA into our [Laravel mix](https://laravel.com/docs/5.8/mix) directives.  Edit the **_resources/js/app.js_** file and add the following:
-
+{% raw %}
 ```php
-require('./components/Users');
+public function authorize()
+{
+	return Auth::user()->can('manage_users');
+}
 ```
+{% endraw %}
 
-This will ensure our SPA code and assets are included in the compiled **_js/app.js_** file.
+Laravel will first evaluate the **_authorize()_** method for the form request object (FRO) before proceeding.  Note that if you are utilizing [policies](https://laravel.com/docs/5.8/authorization#creating-policies) they will not be checked for controller methods utilizing the FRO.  Instead the FRO's **_authorize()_** method will be executed to calculate access control.  If the method returns `true` script execution continues, and if the method returns `false` an authorization exception will be thrown.  
+
+This can be a gotcha; however, because many times you'll see online examples simply returning `true` in the **_authorize()_** method without taking any further action or permission checking.  This will allow access to the controller method unless blocked by a secondary method such as role checking middleware which is probably not what we want.
+
+#### The **_rules()_** method
+
+{% raw %}
+```php
+public function rules()
+{
+	// Define general rules that will apply to all request types
+	$rules = [
+		'name' => 'required',
+		'roles' => 'required',
+	];
+
+	// Creating a new record
+	if ($this->isMethod('post')) {
+		$rules = array_merge($rules,
+			[
+				'email' => 'required|email|unique:users,email',
+				'password' => 'required|confirmed',
+			]
+		);
+	}
+	// Updating an existing record
+	elseif ($this->isMethod('put')) {
+		$rules = array_merge($rules,
+			[
+				'email' => [
+						'required',
+						'email',
+						Rule::unique('users')->ignore($this->route('id')),
+				],
+				'password' => 'sometimes|confirmed',
+			]
+		);
+	}
+
+	return $rules;
+}
+```
+{% endraw %}
+
+This method collects and then returns the validation rules for either 1) a new user object or 2) edits to an existing user object.  You can read more about Laravel validation [here](https://laravel.com/docs/5.8/validation).
 
 That should be the end of our Laravel tasks, and from here on out the rest of our work will be creating the React javascript assets.
 
 ---
+
 ## Develop React assets
 
 ### Install npm packages
@@ -309,32 +344,205 @@ That should be the end of our Laravel tasks, and from here on out the rest of ou
 First we'll want to install the npm packages we'll need later on:
 
 ```bash
-npm install react-bootstrap-table-next --save
-npm install react-bootstrap-table2-toolkit --save
-npm install react-bootstrap-table2-paginator --save
-npm install react-bootstrap-table2-overlay --save
+npm install formik
+npm install yup
+npm install lodash
+npm install react-modal
 
 npm run dev
 ```
 
-Clearly we are going to be doing some work later on with the React bootstrap table package.  You can learn more about it and its features via the following links:
+This will install the following package:
 
-Main features:
+* [Formik](https://jaredpalmer.com/formik/)
+* [Yup](https://github.com/jquense/yup)
+* [lodash](https://github.com/lodash/lodash)
+* [react-modal](https://github.com/reactjs/react-modal)
 
-* Github:  <https://github.com/react-bootstrap-table/react-bootstrap-table2>
-* Main documentation:  <https://react-bootstrap-table.github.io/react-bootstrap-table2/docs/getting-started.html>
-* Storybook:  <https://react-bootstrap-table.github.io/react-bootstrap-table2/storybook/>
+Next let's examine changes to the `resources/js/components/Index.js` file.
 
-Components:
+### resources/js/components/Index.js
 
-* Export to CSV, search, and column toggle:  <https://react-bootstrap-table.github.io/react-bootstrap-table2/docs/toolkits-getting-started.html>
-* Pagination:  <https://react-bootstrap-table.github.io/react-bootstrap-table2/docs/basic-pagination.html>
-* Loading overlay:  <https://react-bootstrap-table.github.io/react-bootstrap-table2/docs/migration.html>
+Due to the size of this file we won't be reproducing it here in its entirety.  Instead we'll review the changes we've made to it below.  You can view the source [here](), or you can execute the following command to view a diff summary from the last write up in this series:
+
+```bash
+git diff 3c6fa220882ae81f5387b88ce35bda9a75717ac8..85624fc42cf9e293b57b428e0a2199e29084da62 -- resources/js/components/Users.js
+```
+
+#### Index.js - Imports
+
+```javascript
+// Our custom components
+import TableExportAndSearch from './TableExportAndSearch';
+import TableActions from './TableActions';
+import CreateForm from './CreateForm'
+import FormModal from './FormModal
+```
+
+We've added three new import statements to the top of the file to load the new React assects we'll be developing below.
+
+#### Index.js - Constructor
+
+{% raw %}
+```javascript
+// Class constructor
+constructor(props) {
+
+	super(props);
+
+	this.state = {
+		// Container for data fetched from the backend
+		userData: [],
+		// Track if we have an outstanding call to the backend in progress
+		loading: false,
+
+		user: null,
+
+		modalsOpen: {
+			create: false,
+			edit: false,
+			delete: false,
+		}
+	};
+
+	//Bindings
+	this.fetchUserData = this.fetchUserData.bind(this);
+	this.toggleModal = this.toggleModal.bind(this);
+}
+```
+{% endraw %}
+
+There are two main changes in the constructor
+
+1. We added a `modalsOpen` object to the state that will allow us to track which of the create, edit, and delete modal windows are opened
+2. We added a new binding for the `toggleModal` function which will be called to actually show/hide the create, edit, and delete modal windows
 
 
-### The SPA 'skeleton'
+#### Index.js - toggleModal()
 
-Next we want to create the initial SPA application component that will load and display all the other React assets.  We'll call this the SPA's 'skeleton' since everything else depends on it and the structure it provides.  The skeleton will start by creating the base HTML of the dashboard that the other React components will render into.
+Next we've added the `toggleModal()` function:
+
+{% raw %}
+```javascript
+// Show/hide the create/edit/delete modals and track which user we are taking action on
+toggleModal(modal, user) {
+	const currentModalState = this.state.modalsOpen[modal];
+
+	if (this.state.modalsOpen[modal]) {
+		this.fetchUserData();
+	}
+
+	// Note the brackets around the word 'modal'
+	// Computed properties:  https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Object_initializer#Computed_property_names
+	this.setState({
+		modalsOpen: {
+			[modal]: !currentModalState
+		},
+		user: user,
+	});
+}
+```
+{% endraw %}
+
+This method toggles the shown/hidden state for each modal using computed properties, and when a modal closes it triggers the index data table to be reloaded which will pickup any new users, edits to existing users, or user deletions.
+
+Note it also accepts a user object as the second parameter, and we'll utilize this in the future to determine which user we should apply edits to or delete by passing it to the appropriate edit/delete modal.
+
+#### Index.js - render() :: actions constant
+
+{% raw %}
+```javascript
+// Define a list of actions we want to be able to take on a given user
+// These are displayed in the datatables's dummy 'Action' column which is defined below
+const actions = [
+	{
+		title: "Edit User",
+		onClick: this.toggleModal,
+		modelType: 'edit',
+		class: "text-secondary",
+		icon: "fa fa-fs fa-pencil-alt",
+	},
+	{
+		title: "Delete User",
+		onClick: this.toggleModal,
+		modelType: 'delete',
+		class: "text-danger",
+		icon: "fa fa-fs fa-trash",
+	}
+];
+```
+{% endraw %}
+
+Our next set of changes occur in the `render()` method.  First we create an `actions` constant that we use to define what should happen when a user clicks the `edit` or `delete` icons we'll place in the data table rows later on for each user.  Further along in the code we'll pass this constant to the data table as part of a `user actions` [dummy column](https://react-bootstrap-table.github.io/react-bootstrap-table2/docs/column-props.html#columnisdummyfield-bool).
+
+#### Index.js - render() :: columns constant
+
+Next we update the columns constant to include the new `user actions` [dummy column](https://react-bootstrap-table.github.io/react-bootstrap-table2/docs/column-props.html#columnisdummyfield-bool).
+
+{% raw %}
+```javascript
+// Define data table columns and which data fields the values should come from
+// Note we also add the 'Actions' dummy column that utilizes the 'const actions' we defined above
+const columns = [
+	{
+		dataField: 'id',
+		text: 'User ID',
+		sort:true,
+	}, {
+		dataField: 'name',
+		text: 'Name',
+		sort:true,
+	}, {
+		dataField: 'email',
+		text: 'Email',
+		sort:true,
+	}, {
+		dataField: 'roles',
+		text: 'Roles',
+		sort:true,
+		formatter: this.roleTableFormatter,
+		csvFormatter: this.roleCSVFormatter,
+	}, {
+		// Create a custom, dummy column with clickable icons to edit and delete the row's user
+		// Example here:  https://react-bootstrap-table.github.io/react-bootstrap-table2/storybook/index.html?selectedKind=Work%20on%20Columns&selectedStory=Dummy%20Column&full=0&addons=1&stories=1&panelRight=0&addonPanel=storybook%2Factions%2Factions-panel
+		dataField: 'actions',
+		isDummyField: true,
+		text: 'Actions',
+		formatter: (cell, row) => {
+			return (
+				<TableActions item={ row } actions={ actions } />
+			);
+		},
+		sort: false,
+		csvExport: false,
+	},
+]
+```
+{% endraw %}
+
+
+
+
+
+-----------------------
+-----------------------
+-----------------------
+-----------------------
+-----------------------
+-----------------------
+-----------------------
+
+
+
+
+
+
+
+
+
+
+
+ Next we want to create the initial SPA application component that will load and display all the other React assets.  We'll call this the SPA's 'skeleton' since everything else depends on it and the structure it provides.  The skeleton will start by creating the base HTML of the dashboard that the other React components will render into.
 
 Create and then add following content to the 'resources/js/components/Users.js' file:
 
@@ -882,7 +1090,7 @@ Once that's finished browse to your Laravel application, click the `Users` link 
 
 This post has covered the first step to creating a User management SPA utilizing Laravel and React.  In the next part of the series we'll explore adding the capability to create new user accounts, and have them saved to the database.
 
-You can find the source code for this post [here](https://github.com/nrasch/AppTemplate/tree/ReactUseManager_PartOne).
+You can find the source code for this post [here](https://github.com/nrasch/AppTemplate/tree/ReactUseManager_PartTwo).
 
 If you have any comments or questions please don't hesitate to reach out.
 
