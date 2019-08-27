@@ -4,8 +4,8 @@ title:  "Creating a User Management UI with Laravel and React - Part One"
 tags: [ Laravel, PHP, Web Development, React ]
 featured_image_thumbnail: assets/images/posts/2019/creating-a-user-manager-with-laravel-and-react_thumbnail.png
 featured_image: assets/images/posts/2019/creating-a-user-manager-with-laravel-and-react_title.png
-featured: true
-hidden: true
+featured: false
+hidden: false
 ---
 
 In this first post of the series we create the index functionality for a [CRUD](https://en.wikipedia.org/wiki/Create,_read,_update_and_delete) based user management single page application (SPA) utilizing [Laravel](https://laravel.com/) and [React](https://reactjs.org/).
@@ -14,10 +14,12 @@ In this first post of the series we create the index functionality for a [CRUD](
 
 ## Series posts
 
-For reference here are the other posts in the series:
+For reference here are the posts in the series:
 
-* [Part one]({% post_url 2019-08-22-creating-a-user-management-ui-with-laravel-and-react-part-one %}) - Add the user accounts index
-* [Part two]() - Add the ability to create new user accounts
+* [Part one]({% post_url 2019-08-22-creating-a-user-management-ui-with-laravel-and-react-part-one %}) - Initial setup with user accounts data table
+* [Part two]({% post_url 2019-08-27-creating-a-user-management-ui-with-laravel-and-react-part-two %}) - Adding the ability to create new users
+
+With more to follow...
 
 ## Prerequisites and assumptions
 
@@ -880,7 +882,7 @@ Once that's finished browse to your Laravel application, click the `Users` link 
 
 ## Summary
 
-This post has covered the first step to creating a User management SPA utilizing Laravel and React.  In the next part of the series we'll explore adding the capability to create new user accounts, and have them saved to the database.
+This post has covered the first step in creating a User management SPA utilizing Laravel and React.  In the next part of the series we'll explore adding the capability to create new user accounts, and have them saved to the database.
 
 You can find the source code for this post [here](https://github.com/nrasch/AppTemplate/tree/ReactUseManager_PartOne).
 
