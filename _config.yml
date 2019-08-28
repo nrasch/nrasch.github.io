@@ -10,7 +10,7 @@ production_url: https://nrasch.github.io/
 disqus: 'nrasch-github-io'
 cover_image: bc_1.jpg
 # Add your GA Tracking Id
-ga_analytics:
+ga_analytics: 'UA-146592450-1'
 
 
 # Author
