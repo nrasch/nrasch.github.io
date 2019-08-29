@@ -4,8 +4,8 @@ title:  "Creating a User Management UI with Laravel and React - Part Two"
 tags: [ Laravel, PHP, Web Development, React ]
 featured_image_thumbnail: assets/images/posts/2019/creating-a-user-manager-with-laravel-and-react_thumbnail.png
 featured_image: assets/images/posts/2019/creating-a-user-manager-with-laravel-and-react_title.png
-featured: true
-hidden: true
+featured: false
+hidden: false
 ---
 
 In this second post of the series we add the ability to create new users to our [CRUD](https://en.wikipedia.org/wiki/Create,_read,_update_and_delete) based user management single page application (SPA) utilizing [Laravel](https://laravel.com/) and [React](https://reactjs.org/).
@@ -14,10 +14,11 @@ In this second post of the series we add the ability to create new users to our 
 
 ## Series posts
 
-For reference here are the posts in the series:
+Posts in this series:
 
 * [Part one]({% post_url 2019-08-22-creating-a-user-management-ui-with-laravel-and-react-part-one %}) - Initial setup with user accounts data table
 * [Part two]({% post_url 2019-08-27-creating-a-user-management-ui-with-laravel-and-react-part-two %}) - Adding the ability to create new users
+* [Part three]({% post_url 2019-08-29-creating-a-user-management-ui-with-laravel-and-react-part-three %}) - Adding the ability to edit existing users
 
 With more to follow...
 
@@ -460,14 +461,14 @@ const actions = [
 	{
 		title: "Edit User",
 		onClick: this.toggleModal,
-		modelType: 'edit',
+		modalType: 'edit',
 		class: "text-secondary",
 		icon: "fa fa-fs fa-pencil-alt",
 	},
 	{
 		title: "Delete User",
 		onClick: this.toggleModal,
-		modelType: 'delete',
+		modalType: 'delete',
 		class: "text-danger",
 		icon: "fa fa-fs fa-trash",
 	}

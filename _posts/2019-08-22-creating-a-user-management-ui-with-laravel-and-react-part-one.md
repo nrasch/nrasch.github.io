@@ -14,10 +14,11 @@ In this first post of the series we create the index functionality for a [CRUD](
 
 ## Series posts
 
-For reference here are the posts in the series:
+Posts in this series:
 
 * [Part one]({% post_url 2019-08-22-creating-a-user-management-ui-with-laravel-and-react-part-one %}) - Initial setup with user accounts data table
 * [Part two]({% post_url 2019-08-27-creating-a-user-management-ui-with-laravel-and-react-part-two %}) - Adding the ability to create new users
+* [Part three]({% post_url 2019-08-29-creating-a-user-management-ui-with-laravel-and-react-part-three %}) - Adding the ability to edit existing users
 
 With more to follow...
 
