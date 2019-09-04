@@ -19,6 +19,7 @@ Posts in this series:
 * [Part one]({% post_url 2019-08-22-creating-a-user-management-ui-with-laravel-and-react-part-one %}) - Initial setup with user accounts data table
 * [Part two]({% post_url 2019-08-27-creating-a-user-management-ui-with-laravel-and-react-part-two %}) - Adding the ability to create new users
 * [Part three]({% post_url 2019-08-29-creating-a-user-management-ui-with-laravel-and-react-part-three %}) - Adding the ability to edit existing users
+* [Part four]({% post_url 2019-09-04-creating-a-user-management-ui-with-laravel-and-react-part-four %}) - Adding the ability to delete existing users
 
 With more to follow...
 

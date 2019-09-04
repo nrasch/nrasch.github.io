@@ -4,8 +4,8 @@ title:  "Creating a User Management UI with Laravel and React - Part Three"
 tags: [ Laravel, PHP, Web Development, React ]
 featured_image_thumbnail: assets/images/posts/2019/creating-a-user-manager-with-laravel-and-react_thumbnail.png
 featured_image: assets/images/posts/2019/creating-a-user-manager-with-laravel-and-react_title.png
-featured: true
-hidden: true
+featured: false
+hidden: false
 ---
 
 In this third post of the series we add the ability to edit existing users to our [CRUD](https://en.wikipedia.org/wiki/Create,_read,_update_and_delete) based user management single page application (SPA) utilizing [Laravel](https://laravel.com/) and [React](https://reactjs.org/).
@@ -19,6 +19,7 @@ Posts in this series:
 * [Part one]({% post_url 2019-08-22-creating-a-user-management-ui-with-laravel-and-react-part-one %}) - Initial setup with user accounts data table
 * [Part two]({% post_url 2019-08-27-creating-a-user-management-ui-with-laravel-and-react-part-two %}) - Adding the ability to create new users
 * [Part three]({% post_url 2019-08-29-creating-a-user-management-ui-with-laravel-and-react-part-three %}) - Adding the ability to edit existing users
+* [Part four]({% post_url 2019-09-04-creating-a-user-management-ui-with-laravel-and-react-part-four %}) - Adding the ability to delete existing users
 
 With more to follow...
 
