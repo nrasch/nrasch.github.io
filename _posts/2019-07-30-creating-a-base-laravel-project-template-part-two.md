@@ -484,7 +484,7 @@ We can observe that the DataTable assets were correctly added to the application
 
 We have now extended the Laravel application base template we started last post with a minimal theme, and we've added additional assets such as Font Awesome and DataTable.  
 
-This should allow us to use the template for quick starts on projects or for on tasks such as interview homework exercises.  We should also be able to easily add advanced styling, components, single page applications, etc. without code collisions and bugs with the existing template assets and libraries.
+This should allow us to use the template for quick starts on projects, or for use with tasks such as interview homework exercises.  We should also be able to easily add advanced styling, components, single page applications, etc. without code collisions and bugs with the existing template assets and libraries.
 
 In the next post we'll implement roles and permissions, as well as work on a User administration CRUD component.  
 
