@@ -4,7 +4,7 @@ title:  "Creating a Base Laravel Project Template Part Two"
 tags: [ Laravel, PHP, Web Development ]
 featured_image_thumbnail: assets/images/posts/2019/creating_base_laravel_project_template_p2_title_thumbnail.png
 featured_image: assets/images/posts/2019/creating_base_laravel_project_template_p2_title.png
-featured: true
+featured: false
 hidden: true
 ---
 
