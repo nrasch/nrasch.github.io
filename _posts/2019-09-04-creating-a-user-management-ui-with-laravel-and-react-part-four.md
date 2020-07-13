@@ -4,7 +4,7 @@ title:  "Creating a User Management UI with Laravel and React - Part Four"
 tags: [ Laravel, PHP, Web Development, React ]
 featured_image_thumbnail: assets/images/posts/2019/creating-a-user-manager-with-laravel-and-react_thumbnail.png
 featured_image: assets/images/posts/2019/creating-a-user-manager-with-laravel-and-react_title.png
-featured: true
+featured: false
 hidden: true
 ---
 
