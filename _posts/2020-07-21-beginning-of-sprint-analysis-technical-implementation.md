@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Beginning of Sprint Analysis - Technical Implementation"
-tags: [ Agile, Scrum, Project Management]
+tags: [ Agile, Scrum, Project Management, Python]
 featured_image_thumbnail: assets/images/posts/2020/beginning-of-sprint-analysis_thumbnail.jpg
 featured_image: assets/images/posts/2020/beginning-of-sprint-analysis_title.jpg
 featured: false
@@ -15,7 +15,7 @@ This in turn is the basis for the analysis and narrative creation--which we disc
 
 The end result will be a programmatic solution that can be used at the start of each sprint to really dig into the details and augment the the Scrum Master's ability to coach the team and business on how to improve their processes.
 
-**NOTE:**  You can view the complete source code for this post [here](assets/html/2000-01-01-Sprint-Starting-Analysis.ipynb).
+**NOTE:**  You can view the complete source code for this post [here](https://nbviewer.jupyter.org/urls/nrasch.github.io/assets/html/2000-01-01-Sprint-Starting-Analysis.ipynb).
 
 <!--more-->
 
@@ -30,7 +30,7 @@ This articles assumes you are familiar with and/or are interested in reading cod
 * [Pandas](https://pandas.pydata.org/)
 * [Matplotlib](https://matplotlib.org/)
 
-**NOTE:**  You can view the complete source code for this post [here](assets/html/2000-01-01-Sprint-Starting-Analysis.ipynb).
+**NOTE:**  You can view the complete source code for this post [here](https://nbviewer.jupyter.org/urls/nrasch.github.io/assets/html/2000-01-01-Sprint-Starting-Analysis.ipynb).
 
 ## Extracting Data from JIRA
 
@@ -635,4 +635,4 @@ One of the main benefits of creating this report programatically is that it can 
 
 We also have the advantage of being able to leverage any of the wide range of Python data science tools which are constantly being added to and improving.  :)
 
-And don't forget:  You can view the complete source code for this post [here](assets/html/2000-01-01-Sprint-Starting-Analysis.ipynb).
+And don't forget:  You can view the complete source code for this post [here](https://nbviewer.jupyter.org/urls/nrasch.github.io/assets/html/2000-01-01-Sprint-Starting-Analysis.ipynb).

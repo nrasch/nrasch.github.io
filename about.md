@@ -5,7 +5,7 @@ title: About
 
 {% include image-caption.html imageurl="/assets/images/pages/about.jpg" title="About" caption="" %}
 
-Nathan Rasch has worked throughout his career as a leader, project manager, and software developer.  He has an MBA in business administration, a BA in Mathematics, a Project Management Professional (PMP) PMI certification, and he is a Certified ScrumMaster (CSM). He's worked in a number of challenging fields such as start ups, biopharmaceuticals, banking, and telecommunications.
+Nathan Rasch has worked throughout his career as a leader, project manager, and software developer.  He has an MBA in business administration, a BA in Mathematics, a Project Management Professional (PMP) PMI certification, and he is a Certified ScrumMaster (CSM) and Certified SAFe® 5 Scrum Master (SSM). He's worked in a number of challenging fields such as start ups, biopharmaceuticals, banking, and telecommunications.
 
 Some of Nathan's successful work experiences include:
 
