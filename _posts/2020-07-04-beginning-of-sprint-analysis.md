@@ -8,11 +8,11 @@ featured: true
 hidden: false
 ---
 
-In this article we’ll be focusing on Agile Scrum project management analysis.  We’ll specifically look at anonymized beginning-of-sprint data from a department that was struggling to improve it’s Agile process while dealing with the burden of technical debt and support issues.  We will analyze and attempt to gain insights into what the data is telling us, and then make a series of recommendations as we go along for improvements and remediation.  
+In this article we’ll be focusing on Agile Scrum project management analysis.  We’ll specifically look at anonymized beginning-of-sprint data from a department that was struggling to improve it’s Agile processes while dealing with the burdens of technical debt and support issues.  We will analyze and attempt to gain insights into what the data is telling us, and then make a series of recommendations as we go along for improvements and remediation.  
 
 The technical tools we’ll use to do this will be [Python](https://www.python.org/), [Pandas](https://pandas.pydata.org/), [Matplotlib](https://matplotlib.org/), with source data being extracted from [JIRA](https://www.atlassian.com/software/jira).  
 
-You can view the [second part](#) of this write up for a full breakdown of the technical steps we took to extract, clean, and present the data if you’d like to try this yourself for your organization and/or project.
+You can view the [second part]({% post_url 2020-07-21-beginning-of-sprint-analysis-technical-implementation %}) of this write up for a full breakdown of the technical steps we took to extract, clean, and present the data if you’d like to try this yourself for your organization and/or project.
 
 The the complete report discussed in this article can be found [here](assets/html/2000-01-01-Sprint-Starting-Analysis.html).
 
@@ -30,7 +30,7 @@ One area I find a common need for in these settings is to help the organization 
 
 These three areas seem to be the place most smaller/medium size companies struggle, and it is very rewarding to begin the process of improvement and watch it bear fruit.  As an example, at a previous company I took my team---who had historically missed almost every sprint commitment they made--to meeting their sprint commitments on time every time.  The boost to their morale and standing within the company at large was hugely gratifying.
 
-In this article we’ll be focusing on Agile Scrum project management analysis. We’ll specifically look at anonymized beginning-of-sprint data from a department that was struggling to improve it’s Agile process while dealing with the burden of technical debt and support issues. We will analyze and attempt to gain insights into what the data is telling us, and then make a series of recommendations as we go along for improvements and remediation.
+In this article we’ll be focusing on Agile Scrum project management analysis. We’ll specifically look at anonymized beginning-of-sprint data from a department that was struggling to improve it’s Agile processes while dealing with the burdens of technical debt and support issues. We will analyze and attempt to gain insights into what the data is telling us, and then make a series of recommendations as we go along for improvements and remediation.
 
 ## Why Analytics?
 
@@ -40,7 +40,7 @@ I often find when bringing changes about it is often best to start with analytic
 
 By using data we can neatly sidestep politics, finger pointing, reopening old wounds, and other sorts of gotchas by focusing on facts and objective measurements.  We aren’t worried about who did what in the past; we want to move the conversation into what we can do in the future as a team to improve our organization.  
 
-It is very hard to argue with data, When people see the dispassionate numbers in black and white it moves the conversation into productive areas focused on solutions.
+It is very hard to argue with data, and when people see the objective numbers in black and white serves to direct the conversation into productive areas focused on solutions.
 
 
 ## The Analysis
@@ -69,9 +69,9 @@ For this department I’ve broken the sprint’s “budget” into two main cate
 
 I have then summed the total amount of funds spent on the sprint based on assumed labor costs, computed the ratios against the whole, as well as describing the cost per story point based on the team's forecasted velocity for the sprint.
 
-We could obviously be much more granular with the expenditures towards business value.  However, in this situation I was dealing with a department saddled with technical debt and support issues.  My first goal was to keep things simple at first to highlight the support costs that were occurring, and help members of the business understand how much potential customer value was being drained away by fixes and code cleanups.
+We could obviously be much more granular with the expenditures towards business value.  However, in this situation I was dealing with a department saddled with technical debt and support issues.  My first goal was to keep things simple at first to highlight the non value generating costs that were occurring, and help members of the business understand how much potential customer value was being drained away by fixes and code cleanups.
 
-Once that shift in perspective is accomplished it would make sense to then bin the value adding activities in a more partitioned way for deeper [ROI](https://www.investopedia.com/terms/r/returnoninvestment.asp) analysis.
+Once that shift in perspective was accomplished it would make sense to then bin the value adding activities in a more partitioned way for deeper [ROI](https://www.investopedia.com/terms/r/returnoninvestment.asp) analysis.
 
 ### Story Point Analysis
 
@@ -99,7 +99,7 @@ I have yet to see a sales/marketing team member not become excited by this idea,
 
 This graph depicts the number of user stories accepted into the sprint grouped by story point size, and it allows the scrum master and team to quickly identify and address outliers and problematic items.
 
-So for example we can see we have a thirteen point ticket (with thirteen being the maximum story point size allowed for this sprint), an eight point ticket (one step down from the maximum story point size), and four zero point tickets.
+So for example we can see we have a thirteen point ticket (with ten being the maximum story point size allowed for this sprint), an eight point ticket, and four zero point tickets.
 
 The thirteen and eight point tickets are problematic, because we assume that ten points is the team’s average velocity per sprint per developer.  Having a thirteen and eight point ticket means that these won’t be finished until the very last moment of the sprint (if at all).
 
@@ -131,7 +131,7 @@ This should enable the team to quickly have access to these items for investigat
 
 This is probably my favorite graph, as it really drives conversation around what is actually important to the business.
 
-This report element depicts the number of times one or more JIRA items have rolled over from one sprint to the next.  We can see for example that we have five items that have rolled over sprint-to-sprint four or more times.  We even have an outlier that has rolled over fifteen sprints!
+This report element depicts the number of times one or more JIRA items have rolled over from one sprint to the next.  We can see for example that we have five items that have rolled over sprint-to-sprint four or more times.  We even have an outlier that has rolled over fifteen sprints in a row!
 
 The question this graph poses is the following:  If something has rolled over sprint-to-sprint fifteen times, is it really of any value to the business?  Should we really be wasting our time thinking about this story when we haven’t needed it completed for over half a year?
 
@@ -139,7 +139,11 @@ The answer is obviously not, or resources would have been allocated to the story
 
 Remember:  A key concept of Agile Scrum is just-in-time flexible delivery of what’s most important to the business.  This is why for example we don’t groom the backlog one year in advance, and most product owners will groom only two to three sprints out.  Further planning beyond this may very well be wasted effort, because the business may need to pivot and do something totally different in the meantime.  We want to stay flexible and only expend effort on the things that count and can be delivered.
 
-My recommendation here would be for the product owner and scrum master to examine the items that have rolled over sprint-to-sprint a number of times and consider 1) removing them from the backlog altogether, 2) inserting them into a much lower spot in the backlog, or 3) identify if this is a red flag indicating perhaps a deeper issue is at play in the sprint planning processes that needs to be addressed.
+> Simplicity--the art of maximizing the amount of work not done--is essential.
+>
+> [Principles behind the Agile Manifesto](https://agilemanifesto.org/principles.html)
+
+My recommendation would be for the product owner and scrum master to examine the items that have rolled over sprint-to-sprint and consider 1) removing them from the backlog altogether, 2) inserting them into a much lower spot in the backlog to relfect their true priority, or 3) identify if this is a red flag indicating perhaps a deeper issue is at play in the sprint planning processes and/or iteration execution that needs to be addressed.
 
 #### Most Rolled Over User Stories
 
@@ -175,6 +179,6 @@ In this article provided commentary and suggestions for a team working to improv
 
 Our next goal will be to pull similar data at the **end** of the sprint and provide insights and guidance in regard to what was actually accomplished during the sprint vs. what was planned at the start.  We’ll also want to perform time series and regression analysis once we have multiple sprints completed in order to gauge progress over time and identify trends (both positive and negative).
 
-You can view the second part of this write up [here](#) for a full breakdown of the technical steps we took to extract, clean, and present the data if you’d like to try this yourself for your organization and/or project.
+You can view the second part of this write up [here]({% post_url 2020-07-21-beginning-of-sprint-analysis-technical-implementation %}) for a full breakdown of the technical steps we took to extract, clean, and present the data if you’d like to try this yourself for your organization and/or project.
 
 You can also find the complete report discussed in this article [here](assets/html/2000-01-01-Sprint-Starting-Analysis.html).

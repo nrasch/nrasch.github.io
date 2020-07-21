@@ -7,18 +7,21 @@ featured_image: assets/images/posts/2020/beginning-of-sprint-analysis_title.jpg
 featured: false
 hidden: false
 ---
-In this post we'll exercise our data science chops to describe how we created the report and analysis document that we examined the narrative for in the [previous article]().  
+In this post we'll exercise our data science chops to describe how we created the report and analysis document that we examined the narrative for in the [previous article]({% post_url 2020-07-04-beginning-of-sprint-analysis %}).  
 
 Our goal for this write up is to create a [Jupyter Notebook](https://jupyter.org/) that can be applied against data extracted at the beginning of a new sprint from [JIRA](https://www.atlassian.com/software/jira), and then have the notebook process the information and output a reporting asset.  
 
-This in turn is the basis for the analysis and narrative creation--which we discussed in the [last post]()--used to share our insights and recommendations with the project team and other business units.
+This in turn is the basis for the analysis and narrative creation--which we discussed in the [last post]({% post_url 2020-07-04-beginning-of-sprint-analysis %})--used to share our insights and recommendations with the project team and other business units.
 
 The end result will be a programmatic solution that can be used at the start of each sprint to really dig into the details and augment the the Scrum Master's ability to coach the team and business on how to improve their processes.
 
+**NOTE:**  You can view the complete source code for this post [here](assets/html/2000-01-01-Sprint-Starting-Analysis.ipynb).
+
 <!--more-->
+
 ## Assumptions
 
-This articles assumes you are familiar with the following and/or are interested in reading code discussion for the following technologies:
+This articles assumes you are familiar with and/or are interested in reading code discussion for the following technologies:
 
 * [JIRA's](https://www.atlassian.com/software/jira) [API](https://developer.atlassian.com/server/jira/platform/rest-apis/)
 * [JQL](https://www.atlassian.com/software/jira/guides/expand-jira/jql)
@@ -27,7 +30,25 @@ This articles assumes you are familiar with the following and/or are interested 
 * [Pandas](https://pandas.pydata.org/)
 * [Matplotlib](https://matplotlib.org/)
 
-You can find the complete source code for this post [here]().
+**NOTE:**  You can view the complete source code for this post [here](assets/html/2000-01-01-Sprint-Starting-Analysis.ipynb).
+
+## Extracting Data from JIRA
+
+I have found one of the best ways to quickly and easily pull all the information I want out of JIRA for dashboards and reports is via the [JIRA Command Line Interface (CLI) plugin](https://marketplace.atlassian.com/apps/6398/jira-command-line-interface-cli?hosting=cloud&tab=overview).  
+
+Not only can you extract data, but you can also created and modify stories, projects, tasks, etc. as well.  This has come in very handy in the past when I wanted to make changes to a large number of stories and needed to avoid having to do it by hand.  You can find a full reference and user guide [here](https://bobswift.atlassian.net/wiki/spaces/JCLI/overview).
+
+For example, here is the command I execute to pull the data for analysis at the beginning of the sprint from the three main project boards:
+
+```
+acli --action getIssueList --jql "project in (P1, P2, P3) AND sprint in openSprints() and sprint not in futureSprints()" --user "XXXX" --password 'YYYY' --server "http://some.server.com" --file "~/beginning_sprint_data.csv" --outputFormat 999 --dateFormat "yyyy-MM-dd"
+```
+
+**_Tip_**:  You can quickly fine tune your JQL query in JIRA using the **_Issues > Search for issues > Advanced_** area of JIRA, and then cut-and-paste the JQL into the CLI statement.  
+
+And here is a [quick primer](https://www.atlassian.com/software/jira/guides/expand-jira/jql#advanced-search) on advanced searching in JIRA if you haven't utilized this feature before.
+
+Next we'll jump into analysis report, and how it was created.
 
 ## Imports and Notebook Config
 
@@ -109,10 +130,10 @@ def makeStoryLink(val, url = 'http://<YOUR_JIRA_URL>/browse/'):
 ```
 
 <br/>
-* A **_get_** and **_put_** function to read/write values from the summary dataframe object
-* An **_autolabel_** function to draw values above bar graph elements
+* A **_get()_** and **_put()_** function to read/write values from the summary dataframe object
+* An **_autolabel()_** function to draw values above bar graph elements
   * A good article on this can be found [here](http://composition.al/blog/2015/11/29/a-better-way-to-add-labels-to-bar-charts-with-matplotlib/)
-* The **_makeStoryLink_** helper function to create JIRA hyperlinks from text values and URL parameters
+* The **_makeStoryLink()_** helper function to create JIRA hyperlinks from text values and URL parameters
 
 ## Define and Initialize
 
@@ -121,7 +142,7 @@ In the next section we start setting everything up for the data processing and f
 We start off by defining the name of the sprint:
 
 ```python
-##  DEFINE AND INITIALIZE  ##
+##  DEFINE VARIABLES  ##
 
 # Define sprint label
 sprint = '2000-01-01'
@@ -179,16 +200,26 @@ Reminder:  You can view the full source code--including the entirety of the **_s
 The next section adds a column to the **_summary_** dataframe object for the current sprint and then reads in the **_csv_** data extracted from JIRA:
 
 ```python
-##  LOAD THE DATA  ##
+##  LOAD THE BEGINNING SPRINT DATA AND SET VALUES  ##
 
 # Init the summary container
 summary[sprint] = np.nan
 
 # Load the beginning sprint data
-df = pd.read_csv('./' + sprint + '-starting.csv')
+df = pd.read_csv('./' + sprint + '-anon.csv')
+
+# Define sprint values as outlined in our assumptions section
+# above for the calculations below
+put('laborCostPerHour', 50)
+put('hoursPerSprint', 60)
+put('pointsPerSprint', 10)
+put('rollOverThreshold', 2)
+put ('storyPointSizeWarningThreshold', 8)
+put('totalResourceCount', 10)
 
 pass;
 ```
+Note that we are making use of our **_put()_** helper function to populate the appropriate key and column values in the **_summary_** dataframe object.
 
 ## Data Processing and Feature Creation
 
@@ -196,21 +227,7 @@ And now we get to the good stuff!
 
 Note that we won't review every line of processing and/or feature creation, but we will review a fair number of examples.  You can always view the full source code--including the entirety of the processing/feature creation section--[here](*).
 
-First a set of constants for the sprint are defined:
-
-```python
-# Init sprint values for calculations below
-put('laborCostPerHour', 50)
-put('hoursPerSprint', 60)
-put('pointsPerSprint', 10)
-put('rollOverThreshold', 2)
-put ('storyPointSizeWarningThreshold', 8)
-put('totalResourceCount', 10)
-```
-
-Note that we are making use of our **_put_** helper function to populate the appropriate key and column values in the **_summary_** dataframe object.
-
-Once that's accomplished the constants can be utilized to populate the data elements for the budget summary table:
+The sprint values we defined can now be utilized to populate the data elements for the budget summary table:
 
 ```python
 # Calculate total resource hours
@@ -234,11 +251,7 @@ df['Cost'] = (df['Story Points'] * get('totalStartingCostPerPoint'))
 put('BAC', np.sum(df['Cost']))
 df['Cost Ratio'] = df['Cost'].values / get('BAC') * 100
 ```
-
-In the written assumptions area of the report we stated the following for the reader:
-* A JIRA **_task_** item is classified the same as a JIRA **_story_** item
-
-An implementation example of this assumption in the code:
+We can also take care of combining **_Task_** and **_Story_** items into one category:
 
 ```python
 # Merge Tasks and Stories
@@ -279,12 +292,13 @@ We can also utilize Python's [list comprehensions](https://docs.python.org/3/tut
 ```python
 df['rollOverCount'] = [len(x.split(',')) - 1 for x in df['Sprint'].values ]
 ```
+
 JIRA stores the number of times a story has rolled over in a comma delimited list in the **_Sprint_** column.  This allows us to split by the comma on that field and take the length to find out how many times a story has rolled over.  We want to subtract one from the length, so we don't count the current sprint against the total.  We take the values from this calculation and assign it to the **_rollOverCount_** field in the **_summary_** dataframe object.
 
 As a final example we can also create new features of interest by combining elements we developed and populated earlier:
 
 ```python
-# Calculate APV and PAV ratio
+# Calculate APV and APAV ratio
 put('APV', get('totalStartingStoryValue') + get('totalStartingSpikeValue'))
 put('APVRatio', (get('APV')/get('BAC'))*100)
 ```
@@ -575,11 +589,16 @@ This graph has been created in the same way as the preceding graph element, and 
 
 ### Most Rolled Over User Stories
 
+```python
+(
+    df.loc[df['rollOverCount'] > get('rollOverThreshold')+1]
+    [['Key', 'Summary', 'Assignee', 'Story Points', 'rollOverCount']]
+    .sort_values(['rollOverCount'], ascending = False)
+    .style.format({'Key': makeStoryLink})
+).hide_index()
+```
+
 This tabular element has been created utilizing the same methods as previous tables, and provides additional information and direct links to those JIRA items that have rolled over more than defined threshold value.
-
-### Most Rolled Over User Stories
-
-SOME TEXT
 
 ## User Story Point Statistics
 
@@ -615,3 +634,5 @@ In this post we explored how to programatically create a start-of-sprint analysi
 One of the main benefits of creating this report programatically is that it can now be run on-demand against future sprint JIRA data extracts.  This allows us to create consistent, repeatable reports at the start of each sprint for dissemination, and gives us an apples-to-apples comparison of our Agile Scrum process improvement progress.  It also allows the Scrum team to diagnose and respond to potential issues occurring during refinement, planning, etc.
 
 We also have the advantage of being able to leverage any of the wide range of Python data science tools which are constantly being added to and improving.  :)
+
+And don't forget:  You can view the complete source code for this post [here](assets/html/2000-01-01-Sprint-Starting-Analysis.ipynb).
