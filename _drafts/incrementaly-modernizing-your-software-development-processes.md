@@ -1,9 +1,9 @@
 ---
 layout: post
-title:  "Incrementaly Upgrading Your Software Development Processes"
+title:  "Incrementaly Modernizing Your Software Development Processes"
 tags: [ Software Development, Management]
-featured_image_thumbnail: assets/images/posts/2020/incrementaly-upgrading-your-software-development-processes_thumbnail.jpg
-featured_image: assets/images/posts/2020/incrementaly-upgrading-your-software-development-processes_title.jpg
+featured_image_thumbnail: assets/images/posts/2020/incrementaly-modernizing-your-software-development-processes_thumbnail.jpg
+featured_image: assets/images/posts/2020/incrementaly-modernizing-your-software-development-processes_title.jpg
 featured: false
 hidden: false
 ---
@@ -113,7 +113,7 @@ So, for example, the “Software Development” area has the following modules l
 
 Again, you can build these out in any order you wish.  As each module is completed you will be able to realize the benefits immediately, and the modules combine to support more advanced optimizations such as [DevOps](https://theagileadmin.com/what-is-devops/).
 
-For ease of reference here are the links to the [JPG](assets/images/posts/2020/Incremental SDP Template.jpg) and [Visio](#) source file for the SDP template displayed above.  
+For ease of reference here are the links to the [JPG](assets/images/posts/2020/Incremental SDP Template.jpg) and [Visio](/assets/html/Incremental SDP Template.vsdx) source file for the SDP template displayed above.  
 
 You can utilize these resources as-is, or you can adapt and modify to incorporate your own needs and ideas.  For example, perhaps you want to add [Extreme Programming](http://www.extremeprogramming.org/) into the mix or [Test-Driven Development](https://en.wikipedia.org/wiki/Test-driven_development) under the  “Software Development” area.  
 
