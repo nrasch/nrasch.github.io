@@ -4,8 +4,8 @@ title:  "Incrementaly Modernizing Your Software Development Processes"
 tags: [ Software Development, Management]
 featured_image_thumbnail: assets/images/posts/2020/incrementaly-modernizing-your-software-development-processes_thumbnail.jpg
 featured_image: assets/images/posts/2020/incrementaly-modernizing-your-software-development-processes_title.jpg
-featured: false
-hidden: false
+featured: true
+hidden: true
 ---
 
 In this article we explore a strategy to assist software development teams who are looking to advance their limited, initial, and/or legacy software development processes (SDP) towards a more mature state in a modular, customizable way that builds a foundation for larger modernization initiatives later on such as:
@@ -13,7 +13,7 @@ In this article we explore a strategy to assist software development teams who a
 * [Continuous Deployment (CD)](https://en.wikipedia.org/wiki/Continuous_delivery)
 * [DevOps](https://theagileadmin.com/what-is-devops/)
 
-We also discuss the pros and cons of improving the SDP as well as present a customizable SDP template to help kickstart the process that supports realizing benefits along each step of the way.
+We discuss the pros and cons of modernizing the SDP as well as present a customizable SDP template to help kickstart the process that supports realizing benefits along each step of the way.
 
 <!--more-->
 
@@ -48,22 +48,26 @@ Let’s examine a few quotes to back this idea up:
 ---
 
 _The primary characteristic of DevOps culture is increased collaboration between the roles of development and operations. There are some important cultural shifts, within teams, and at an organizational level, that support this collaboration._  
-Rouan Wilsenach, [https://martinfowler.com/bliki/DevOpsCulture.html](https://martinfowler.com/bliki/DevOpsCulture.html)
+
+_Rouan Wilsenach, [https://martinfowler.com/bliki/DevOpsCulture.html](https://martinfowler.com/bliki/DevOpsCulture.html)_
 
 ---
 
-_DevOps is a mindset, a culture, and a set of technical practices. It provides communication, integration, automation, and close cooperation among all the people needed to plan, develop, test, deploy, release, and maintain a Solution._  
-Scaled Agile, Inc., [https://www.scaledagileframework.com/devops/](https://www.scaledagileframework.com/devops/)
+_DevOps is a mindset, a culture, and a set of technical practices. It provides communication, integration, automation, and close cooperation among all the people needed to plan, develop, test, deploy, release, and maintain a Solution._
+
+_Scaled Agile, Inc., [https://www.scaledagileframework.com/devops/](https://www.scaledagileframework.com/devops/)_
 
 ---
 
-_To get the full benefits of CI, you will need to automate your tests to be able to run them for every change that is made to the main repository. We insist on running tests on every branch of your repository and not just focus on the main branch. This way you will be able to capture issues early and minimize disruptions for your team._  
-Atlassian, [https://www.atlassian.com/continuous-delivery/continuous-integration/how-to-get-to-continuous-integration](https://www.atlassian.com/continuous-delivery/continuous-integration/how-to-get-to-continuous-integration)
+_To get the full benefits of CI, you will need to automate your tests to be able to run them for every change that is made to the main repository. We insist on running tests on every branch of your repository and not just focus on the main branch. This way you will be able to capture issues early and minimize disruptions for your team._
+
+_Atlassian, [https://www.atlassian.com/continuous-delivery/continuous-integration/how-to-get-to-continuous-integration](https://www.atlassian.com/continuous-delivery/continuous-integration/how-to-get-to-continuous-integration)_
 
 ---
 
 _With continuous integration, the “system always runs,” meaning it’s potentially deployable, even during development. CI is most easily applied to software solutions where small, tested vertical threads can deliver value independently. In larger, multi-platform software systems, the challenge is harder. Each platform has technical constructs, and the platforms must be continuously integrated to prove new functionality. In complex systems comprised of software, hardware, and components and services provided by suppliers, CI is harder still._  
-Scaled Agile, Inc., [https://www.scaledagileframework.com/continuous-integration/](https://www.scaledagileframework.com/continuous-integration/)
+
+_Scaled Agile, Inc., [https://www.scaledagileframework.com/continuous-integration/](https://www.scaledagileframework.com/continuous-integration/)_
 
 ---
 
@@ -77,7 +81,7 @@ to something like this
 
 ![Incremental SDP Template](assets/images/posts/2020/Incremental SDP Template.jpg)
 
-may appear to be daunting or confusing on where to even begin. In the worstorst case it might appear impossible to progress, and thus preclude your forward movement altogether.
+may appear to be daunting or confusing on where to even begin. In the worst case it might appear impossible to progress, and thus preclude your forward movement altogether.
 
 ## The Solution
 
@@ -173,7 +177,7 @@ And here are two concrete examples discussing explain plans for [MySQL](https://
 
 ### Vulnerability Scans
 
-_A vulnerability scanner is a computer program designed to assess computers, networks or applications for known weaknesses. In plain words, these scanners are used to discover the weaknesses of a given system. They are utilized in the identification and detection of vulnerabilities arising from mis-configurations or flawed programming within a network-based asset such as a firewall, router, web server, application server, etc.  ([Wikipedia](https://en.wikipedia.org/wiki/Vulnerability_scanner))_
+_A vulnerability scanner is a computer program designed to assess computers, networks or applications for known weaknesses. In plain words, these scanners are used to discover the weaknesses of a given system. They are utilized in the identification and detection of vulnerabilities arising from mis-configurations or flawed programming within a network-based asset such as a firewall, router, web server, application server, etc.  ([Source](https://en.wikipedia.org/wiki/Vulnerability_scanner))_
 
 It is a good habit to build vulnerability scanning into your processes as early as possible.  As the business grows sooner or later a client will ask to either 1) see the results of your vulnerability scans and/or 2) more commonly want to perform their own vulnerability scans against your software as part of their auditing and due diligence.  In either case, you will want the client to receive a report that shows your system is secure, and that the client can trust you with their data and business.  
 
@@ -188,7 +192,7 @@ I’m going to pretty much shamelessly plug/recommend [git](https://git-scm.com/
 
 _By far, the most widely used modern version control system in the world today is Git. Git is a mature, actively maintained open source project originally developed in 2005 by Linus Torvalds, the famous creator of the Linux operating system kernel. A staggering number of software projects rely on Git for version control, including commercial projects as well as open source. Developers who have worked with Git are well represented in the pool of available software development talent and it works well on a wide range of operating systems and IDEs (Integrated Development Environments)._
 
-_Having a distributed architecture, Git is an example of a DVCS (hence Distributed Version Control System). Rather than have only one single place for the full version history of the software as is common in once-popular version control systems like CVS or Subversion (also known as SVN), in Git, every developer's working copy of the code is also a repository that can contain the full history of all changes.  [Atlassian](https://www.atlassian.com/git/tutorials/what-is-git)_
+_Having a distributed architecture, Git is an example of a DVCS (hence Distributed Version Control System). Rather than have only one single place for the full version history of the software as is common in once-popular version control systems like CVS or Subversion (also known as SVN), in Git, every developer's working copy of the code is also a repository that can contain the full history of all changes.  ([Source](https://www.atlassian.com/git/tutorials/what-is-git))_
 
 Fair warning:  Like linting, git branching can be a hot topic for development teams, so be prepared to facilitate the discussions and keep the meeting on track!
 
@@ -201,7 +205,7 @@ And finally, [here](https://www.git-tower.com/blog/git-hosting-services-compared
 
 ### Automated Testing
 
-_In software testing, test automation is the use of software separate from the software being tested to control the execution of tests and the comparison of actual outcomes with predicted outcomes.  Test automation can automate some repetitive but necessary tasks in a formalized testing process already in place or perform additional testing that would be difficult to do manually. Test automation is critical for continuous delivery and continuous testing.  [Wikipedia](https://en.wikipedia.org/wiki/Test_automation)_
+_In software testing, test automation is the use of software separate from the software being tested to control the execution of tests and the comparison of actual outcomes with predicted outcomes.  Test automation can automate some repetitive but necessary tasks in a formalized testing process already in place or perform additional testing that would be difficult to do manually. Test automation is critical for continuous delivery and continuous testing.  ([Source](https://en.wikipedia.org/wiki/Test_automation))_
 
 The great part about automated testing is the computer never gets tired, it always does things the same way, and you can have it repeat tests over and over.  This frees up your QC department from performing manual, time-consuming regression tests, and allows them to focus their expertise on smoke testing, edge cases, and other exploratory areas where human “fuzzy” thinking excels.
 
@@ -216,7 +220,7 @@ However, if we utilize automated testing we can neatly sidestep this issue.  We 
 ### Test Plans
 Chances are if you are reading this you know what test plans are.  However, for completeness sake:
 
-_A test plan documents the strategy that will be used to verify and ensure that a product or system meets its design specifications and other requirements. A test plan is usually prepared by or with significant input from test engineers.  [Wikipedia](https://en.wikipedia.org/wiki/Test_plan)_
+_A test plan documents the strategy that will be used to verify and ensure that a product or system meets its design specifications and other requirements. A test plan is usually prepared by or with significant input from test engineers.  ([Source](https://en.wikipedia.org/wiki/Test_plan))_
 
 Furthermore, a test plan will usually confirm the acceptance criteria as defined by the product owner have been met, explore edge cases for logic/system flow errors, ensure the visual components of the system display correctly, validate system inputs and outputs, as well as other exploratory testing the QC engineer feels is appropriate.
 
