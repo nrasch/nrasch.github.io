@@ -4,7 +4,7 @@ title:  "Beginning of Sprint Analysis"
 tags: [ Agile, Scrum, Project Management]
 featured_image_thumbnail: assets/images/posts/2020/beginning-of-sprint-analysis_thumbnail.jpg
 featured_image: assets/images/posts/2020/beginning-of-sprint-analysis_title.jpg
-featured: true
+featured: false
 hidden: false
 ---
 
