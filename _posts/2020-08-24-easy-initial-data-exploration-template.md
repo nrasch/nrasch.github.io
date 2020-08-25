@@ -1,74 +1,87 @@
 ---
 layout: post
 title:  "Easy Initial Data Exploration Template"
-tags: [ Software Development, Management]
-featured_image_thumbnail: assets/images/posts/2020/incrementaly-modernizing-your-software-development-processes_thumbnail.jpg
-featured_image: assets/images/posts/2020/incrementaly-modernizing-your-software-development-processes_title.jpg
-featured: false
-hidden: false
+tags: [ Python, Data Analysis]
+featured_image_thumbnail: assets/images/posts/2020/easy-initial-data-exploration-template_thumbnail.jpg
+featured_image: assets/images/posts/2020/easy-initial-data-exploration-template_title.jpg
+featured: true
+hidden: true
 ---
 
-In this article we explore a Jupyter Notebook template for assisting in initial data exploration.  The resulting familiarity with the data can then be utilized as the basis for further detailed analysis, narrative development, feature engineering, etc.
+In this article we explore what it means to create a [Jupyter Notebook](https://jupyter.org/) template for use in initial data exploration. The resulting familiarity with the data can then be utilized as the basis for further detailed analysis, narrative development, feature engineering, etc.
 
 <!--more-->
 
 ## Introduction
 
-Often when leading teams or managing projects we’ll be confronted with various data sets.  Examples might be user feedback on a new feature or system, project management metrics, system usage statistics, or performance metrics.
+When leading teams or managing projects it is often that one will encounter data in different forms such as user feedback, project management metrics, system usage statistics, or performance metrics.
 
-In each of these cases we’d like to be able to analyze the data, develop a narrative describing what the data is telling us, and then create one or more actionable recommendations.
+In each of these cases we'd like to be able to analyze the data, develop a narrative describing what the data is telling us, and then create one or more actionable recommendations and/or insights.
 
-However, the first step is usually becoming familiar with the general shape of the data, and then using that as a guide on how to proceed next.  We aren’t performing a deep dive; we just want to become generally familiar with the data, and then let that guide us onto the next, more detailed steps.
+However, the first step is usually becoming familiar with the general 'shape' of the data, and then use that as a guide on how to proceed next. We aren't performing deep dive as of yet; our first goal is simply to become generally familiar with the data, and then allow this to guide us onto the next, more detailed steps.
 
-[insert flow diagram here]
 
-For example, let us assume we have a set of unstructured textual data gathered from user feedback on a web application we manage.  In this case we might want to understand the most commonly used language in the text, frequency counts, and review length.  Based on what we see perhaps we’ll notice a high number of negative terms used in the review.  This will help us to start thinking about how to more deeply analyze the negative reviews by perhaps sorting them into categories that map to various areas of the application, or if there isn’t a clear delineation perhaps we’d like to apply an unsupervised  K-means clustering algorithm to the data to programmatically create groupings for further investigation.
+![png](assets/images/posts/2020/data-analysis-process.png)
 
-Based on the groupings we find we could then develop a narrative explaining what the data is telling us, a set of actionable recommendations to address the root causes for each category, and Key Performance Indicators (KPIs) to measure progress.
+For example, let us assume we have a corpus of unstructured user feedback on a web application we manage. In this case we might want to understand the most commonly used language in the texts, frequency counts, and review lengths. Based on what we uncover perhaps we'll notice a high number of negative terms in the texts.
+
+This in turn might lead us to start thinking about how we might more deeply analyze the seemingly negative comments:
+
+* For example, should we categorize the reviews in a way that maps to various areas of the application?  Is the data structured in such a way that this is possible?
+* If there isn't a clear categorical delineation should we instead apply an unsupervised [K-means](https://en.wikipedia.org/wiki/K-means_clustering) clustering algorithm to programmatically create groupings for further investigation?
+
+Based on the groupings we find we could then potentially develop a narrative, a set of actionable recommendations to address the root causes for each category, and Key Performance Indicators (KPIs) to measure progress.
+
+So, in the example above–and indeed the subject of this article–we use initial data exploration to shape and guide our deeper, secondary analysis, narrative development, and recommendations/insights.
 
 ## Assumptions
-
 
 Before we begin a few assumptions:
 
 ### Your data is clean.  
 
-Data cleaning is a whole subject unto itself, and we could write an entire separate article on the matter.  For the purposes of this write up; however, we’ll assume your data is mostly clean, and you’ve dealt with any missing values, incorrect data types, etc. before the initial exploration.
+Data cleaning is a subject unto itself, and a whole separate article could be written on the topic. But for the purposes of this write up; however, we will assume that your data is mostly clean, and that any issues with missing values, incorrect data types etc has been handled and dealt with before the initial exploration.
 
-We’ll take a quick look into dealing with a few messy records, but we won’t take a deep dive into the subject in this article.
+So, while we will take a quick look later on at dealing with a few messy records, this article will not explore the subject in detail.
+
+[Here](https://www.justintodata.com/data-cleaning-python-ultimate-guide/) is a good resource on the subject if you want to learn more.
 
 ### You have some basic Python programming skills and access to a Jupyter Notebook environment.  
 
-If you use the template from this article most of the programming work has been done for you.  You’ll simply need to adjust the template as you see fit to meet your objectives.  If on the other hand you need help setting up your Jupyter Notebook environment you can refer to a previous article I wrote on this subject [here].
+If you use the template from this article most of the programming work has been done for you. You'll simply need to adjust the template as you see fit to meet your objectives. If on the other hand you need help setting up your Jupyter Notebook environment you can refer to a previous article I wrote on this subject [here](https://nrasch.github.io/setup-a-machine-learning-python-development-environment-in-windows).
+
+Also note if you need a hand let me know; I'll be happy to help out as I'm able.  :)
 
 ## Resources
 
-We’ll discuss each the following resources in more detail later on, and we include them here for easy reference:
+We'll discuss each the following resources in more detail later on, but we include them here for easy reference:
 
-* You can find the template discussed in this article [here]()
-* You can find the modified Iris data utilized in the template [here]()
-* You can find the modified IMDB movie review text utilized in the template [here]()
+* You can find the template discussed in this article [here](/assets/html/Easy-Initial-Data-Exploration-Notebook.ipynb)
+* You can find the modified `Iris Data Set` utilized in the template [here](/assets/html/datasets/iris.data.csv)
+* You can find the modified `IMDB Movie Reviews Set` text utilized in the template [here](/assets/html/datasets/reviews.obj)
 
-## Let’s Get Started!
+## Let's Get Started!
+
+So, having said all that, let's get started!
 
 ### Sample Data
 
-With the introduction and assumptions out of the way we can get started.  First; however, we need some data to execute the template against and show how it works.
+The first thing we need to do; however, is obtain example data to execute the template against to illustrate how it works.
 
-We’ll be utilizing two freely available data sets that are commonly used throughout the data science community:
+To do this we'll be utilizing two freely and commonly referred to example data sets:
 
 * [The Iris Data Set](http://archive.ics.uci.edu/ml/datasets/Iris/)
 * [The IMDB Movie Reviews Set](https://www.kaggle.com/lakshmi25npathi/imdb-dataset-of-50k-movie-reviews)
 
-Note that we’ve made two modifications to these data sets:
+Note that we've made two modifications to these data sets:
 
-For the `Iris Data Set` we’ve added two new records to the set to simulate non-numeric and NaN issues.  You can find our modified version [here]().
+* For the `Iris Data Set` we've added two new records to the set to simulate non-numeric and NaN issues.  You can find our modified version [here](assets/html/datasets/iris.data.csv).
 
-For the `IMDB Movie Reviews Set` we already cleaned and processed the review text, so that we can utilize it directly in the template.  You can find our modified version [here]().
+* For the `IMDB Movie Reviews Set` we already cleaned and processed the review text to use it directly in the template.  You can find our modified version [here](assets/html/datasets/reviews.obj).
 
 ### Jupyter Notebook Template
 
-Once we have the cleaned data in hand we can begin utilizing the Jupyter Notebook Template (found [here]()) to gain an initial idea of what the data looks like and plan our next actions.  
+Once we have access to the data sets we can utilize the Jupyter Notebook Template (found [here](assets/html/Easy-Initial-Data-Exploration-Notebook.ipynb)) to gain the initial idea of what the data looks like and plan our next actions.
 
 Let's break down what the template is doing section-by-section:
 
@@ -77,7 +90,6 @@ Let's break down what the template is doing section-by-section:
 ## Libraries
 
 We start by importing the Python libraries we'll need for our initial data exploration:
-
 
 ```python
 # Configure the notebook
@@ -112,8 +124,15 @@ import os
 
 ## Data
 
-Note we are loading a modified Iris data set and a IMDB Movie Reviews data set.  You can download these files [here]() and [here](), and we assume you've placed the data sets in a directory called `datasets` in the same root folder as this template.
+Note we are loading a modified Iris data set and a IMDB Movie Reviews data set.  You can download these files [here](assets/html/datasets/iris.data.csv) and [here](assets/html/datasets/reviews.obj), and we assume you've placed the data sets in a directory called `datasets` in the same root folder as this template like so:
 
+```
+├── datasets
+│   ├── iris.data.csv
+│   └── reviews.obj
+```
+
+Let's go ahead and load the data files:
 
 ```python
 dataFile = os.path.join('.', 'datasets', 'iris.data.csv')
@@ -128,10 +147,9 @@ reviews = pickle.load(filehandler)
 
 # Helper functions
 
-Next we want to write a quick helper function, `corrTableColors()`.  This function allows us to set rules on when to apply colors to the `correlation` table values which we'll create below.  
+Next we want to write a quick helper function, `corrTableColors()`. This function allows us to set rules on when to apply colors to the `correlation` table values which we'll create below.
 
-Note that you can change the threshold values to better meet your needs if required.  For example, we are highlighting any correlation values greater or less than `0.7`, but these can easily be altered for your project data.
-
+Note that the threshold values in the function can be altered to meet your needs as required. For example, we are highlighting any correlation values greater or less than 0.7, but these can easily be altered for your project data.
 
 ```python
 def corrTableColors(value):
@@ -156,7 +174,7 @@ We'll utilize the `Iris Data Set` for the steps below, so that we can see how th
 
 ## Non-Visual Exploration
 
-We begin with a non-visual exploration where we examine properties of the data such as the number of records, the data types, descriptive statistics, correlations, etc.
+We start with a non-visual exploration where the properties of the data are examined such as the number of records, the data types, descriptive statistics, correlations, etc.
 
 ### Shape
 
@@ -170,7 +188,7 @@ print("data.shape = ", data.shape)
     data.shape =  (152, 5)
 
 
-Thus we have 150 rows/observations and 5 columns/variables.
+Thus we have 152 rows/observations and 5 columns/variables.
 
 ### First 10 rows
 
@@ -194,7 +212,7 @@ print(data.head(10))
     9         4.9         3.1          1.5         0.1  Iris-setosa
 
 
-We can clearly see that the first four columns are numeric data, and the last column appears to be classification labels.  
+We can clearly see that the first four columns are numeric data, and the last column appears to be classification [labels](https://en.wikipedia.org/wiki/Labeled_data).  
 
 We aren't sure at this point; however, what the ranges of the numeric data are or how many labels we are dealing with.  We'll explore this later on.
 
@@ -217,7 +235,7 @@ print(data.dtypes)
 
 OK, this is interesting!  The `dtypes` command appears to think we have some non-numeric data in the `sepalLength` column, and we know this because it classifies the column as the `object` type.
 
-**Spoiler alert**:  Remember when I said above we are using a modified version of the `Iris Data Set`?  This is the reason:  I intentionally placed two problematic records into the data to simulate what might happen if a few slipped through our initial cleaning.  Below we'll take a few basic actions to mitigate this...
+**Spoiler alert**:  Remember when I said above that we are using a modified version of the `Iris Data Set`? This is the reason: I intentionally placed two problematic records into the data to simulate what might happen if a few slipped through our initial cleaning. Below we'll take a few basic actions to mitigate this…
 
 If we sort of the data in descending order the non-numeric values should float to the top and give us a better idea of what is occurring:
 
@@ -225,9 +243,6 @@ If we sort of the data in descending order the non-numeric values should float t
 ```python
 data['sepalLength'].sort_values(ascending = False).head(5)
 ```
-
-
-
 
     151    abc
     131    7.9
@@ -237,12 +252,11 @@ data['sepalLength'].sort_values(ascending = False).head(5)
     Name: sepalLength, dtype: object
 
 
-
-Ahah!  It appears that record `151` has a typo:  Some one (i.e. me) put the value `abc` into the field instead of an actual numeric value.
+Ahah!  It appears that record `151` has a typo:  Someone (i.e. me) put the value `abc` into the field instead of an actual numeric value.
 
 Let's drop the record and recast the column into a numeric data type.  
 
-Note that in this case it is perfectly fine for us to drop the record, because we are working on initial data exploration.  At this point we simply want to get a sense of the story the data is telling us, and so removing a few problematic records shouldn't affect that outcome.
+Note that in this case it is perfectly fine for us to drop the record, because we are working on initial data exploration.  At this point we simply want to get a sense of the story the data is telling us, and so removing a few problematic records shouldn't affect this outcome.
 
 
 ```python
@@ -264,7 +278,7 @@ print(data.dtypes)
     dtype: object
 
 
-We now see that all the columns are numeric except the last columns which appears to contain classification data.
+We now see that all the columns are numeric except the last column which we assumed contained classification label data.
 
 Another item we should check for is `NULL` values.  Python does not use the `NULL` keyword, and instead uses `NaN` and `None` to represent a `NULL`.
 
@@ -312,7 +326,7 @@ data.isna().sum()
 
 
 
-As a reminder:  Data cleaning is a whole subject unto itself, and we could write an entire separate article on the matter.  For this write up; however, we are assuming your data is mostly clean, and we've just covered two basic commands to deal with a few records that might have slipped through.
+As a reminder: Data cleaning is a whole subject unto itself, which could have an entire article dedicated to this subject alone. For this write up; however, we are assuming your data is mostly clean, and we've just covered two basic commands to deal with a few records that might have slipped through.
 
 ### Descriptive stats
 
@@ -424,15 +438,17 @@ We can see for example that the `sepalLength` values fluctuate between 4.3 and 7
 
 We can also note that the numeric values seem to be on similar scale.  
 
-Note that scale is important, because if you were planning on using an algorithm such as [linear regression](), [neural networks](), [K-means](), etc. as part of your narrative/analysis you'd need to take into scaling into account.
+Note that scale is important, because if you were planning on using an algorithm such as [linear regression](https://en.wikipedia.org/wiki/Linear_regression), [neural networks](https://en.wikipedia.org/wiki/Neural_network), [K-means](https://en.wikipedia.org/wiki/K-means_clustering), etc. as part of your narrative/analysis you'd need to take into scaling into account.
 
 For example, when dealing with data such as housing you might value such as $450,000 for the house price and the value 3 for the number of bathrooms.  In these cases you'd need to apply `normalization` and/or `standardization` techniques to mitigate the variances between the value scales.  
 
-While these topics are out of scope for this article you can read more about them [here](https://www.analyticsvidhya.com/blog/2020/04/feature-scaling-machine-learning-normalization-standardization/) if you want to learn more.
+For example, we wouldn't want the computer to become confused and think that the number of bathrooms was so small in comparison to the house price that it had no effect, which is quite the opposite!
+
+While these topics are out-of-scope for this article, if you want to learn more you can read more about them [here](https://www.analyticsvidhya.com/blog/2020/04/feature-scaling-machine-learning-normalization-standardization/).
 
 ### Class distribution
 
-Let's examine the last column which appeared to be labels for each row.  How many different classes/labels are we dealing with?
+Let's examine the last column which appeared to be categorization labels for each row.  How many different classes/labels are we dealing with?
 
 
 ```python
@@ -450,11 +466,11 @@ data.groupby('class').size()
 
 
 
-We have an even distribution of classes/labels among the samples.  
+We note that we have an even distribution of classes/labels among the samples.  
 
 If you were planning on using data modeling this would be important, because you'd have to account for a disparity in the number of classes within the observations if an imbalance existed.
 
-For example, if we have one thousand positive comments and four negative ones, it would be hard to draw convincing conclusions, identify trends, or make recommendations on the four negative samples.
+For example, if we have one thousand positive comments and four negative ones, it would be hard to draw convincing conclusions, identify trends, or make recommendations on how we could improve on the four negative samples alone.
 
 ### Correlation
 
@@ -467,9 +483,6 @@ As stated before, if you want to change the color thresholds to fit your needs t
 corr = data.corr(method = "pearson")
 corr.style.applymap(corrTableColors)
 ```
-
-
-
 
 <style  type="text/css" >
 #T_36ee5286_e292_11ea_bfd9_c1ca50cf1e88row0_col0,#T_36ee5286_e292_11ea_bfd9_c1ca50cf1e88row1_col1,#T_36ee5286_e292_11ea_bfd9_c1ca50cf1e88row2_col2,#T_36ee5286_e292_11ea_bfd9_c1ca50cf1e88row3_col3{
@@ -513,7 +526,9 @@ corr.style.applymap(corrTableColors)
 
 Unsurprisingly the data set has one or more positive correlations present, which our intuition would have told us would be the case in data concerning plants.
 
-In a real world data set this would potentially provide us areas to investigate further.  For example, assume we had metrics on the number of clicks required to perform some task, and metrics on the time taken for a web page to load.  We could examine the correlation between these two metrics and the reported user satisfaction rating for the system in order to identify potential positive or negative relationships.
+In a real-world data set this would potentially provide us areas to investigate further.  For example, assume we had metrics on the number of clicks required to perform some task, and metrics on the time taken for a web page to load.  We could examine the correlation between these two metrics and the reported user satisfaction rating for the system in order to identify potential positive or negative relationships.
+
+We would expect to find that requiring the user to click excessively together with long loading times would increase dissatisfaction, and the correlation table could help us empirically identify this linkage.   
 
 ### Skew
 
@@ -523,7 +538,7 @@ In a real world data set this would potentially provide us areas to investigate 
 
 In this image the 'tail' of the data drifts off to the right, and this is called `positive skewness`.  If on the other hand the tail would have drifted off to the left we would have said the data had `negative skewness`.
 
-Skewness might interest you if you are concerned about data that doesn't follow the [bell curve]() (also known as a `normal distribution`).
+Skewness might interest you if you are concerned about data that doesn't follow the [bell curve](https://en.wikipedia.org/wiki/Normal_distribution) (also known as a `normal distribution`).
 
 For example, let us assume we are examining data from a project concerning customer hold times.  If we saw `positive skewness` in the data we might be concerned, because the long right-side tail would imply some customers are having potentially excessive wait times which in turn could negatively impact customer satisfaction.
 
@@ -551,7 +566,7 @@ We'll also be able to visually confirm this in the next section.
 
 ## Visualizations
 
-Now that we've finished with the non-visual data exploration let's employ some graphical techniques and see what we find.  :)
+Now that we've finished with the non-visual data exploration let's employ some graphical techniques and see what we can find. :)
 
 ### Histograms
 
@@ -569,19 +584,20 @@ pyplot.show()
 ![png](assets/images/posts/2020/output_47_0.png)
 
 
-The histograms confirm what we learned earlier about `skewness` in the data, and both `sepalLength` and `sepalWidth` appear to normal distributions (i.e. follow the bell curve).  
+The histograms confirm what we learned earlier about `skewness` in the data, and both `sepalLength` and `sepalWidth` appear to `normal distributions` (i.e. follow the `bell curve`).  
 
 `petalLength` and `petalWidth` on the other hand appear to be [bimodal](https://www.statology.org/bimodal-distribution/) distritubtions.  Or that is to say they appear to have two 'peaks' in their value distributions.
 
 A `bimodal` (or `multimodal` if there are more than two peaks) might be of interest to you if you were considering scheduling or queue analysis data for example.  
 
-Assume we were working on a project to deploy a online restaurant point of sale (POS) system, and we wanted to ensure the system was responsive during peak hours.  Examining the sales data for the restaurant hour-by-hour would likely reveal a `bimodal` distribution with two peaks:  One at breakfast and another at lunch.
+Let's assume that we were working on a project to deploy an online restaurant point of sale (POS) system, and we wanted to ensure the system was responsive during peak hours (i.e. non-functional requirements). Examining the sales data for the restaurant hour-by-hour would likely reveal a bimodal distribution with two peaks: One at breakfast and another at lunch.
 
 We could use these peaks to calculate the capacity and scalability requirements for the system, recommend on-demand load balancing for the back end POS servers during peak hours, etc.
 
+
 ### Density plots
 
-`Density plots` can be thought of as plots of smoothed histograms.  This assists in examining the 'shape' of the data, and--for me anyhow--are easier to read when considering distribution type and multimodal distribution type.
+`Density plots` can be thought of as plots of smoothed histograms. This assists in examining the 'shape' of the data, and are easier to read–for me anyhow–when considering distribution and multimodal distribution types.
 
 Let's take a look:
 
@@ -609,11 +625,11 @@ These plots make it very easy to gauge the distribution of the data as well as t
 
 So for example we can clearly see that the `petalLength` and `sepalWidth` follow a `bell curve`, and that the `petalLength` and `petalWidth` values are indeed `bimodal`.
 
-We also have an additional confirmation regarding the lack of skewness of the data.
+We also have an additional confirmation regarding the lack of skewness of the data as covered earlier.
 
 ### Box and whisker plots
 
-`Box and whisker` plots are fantastic data visualization tools although they can be non-intuitive to decipher at first.  [Here](https://flowingdata.com/2008/02/15/how-to-read-and-use-a-box-and-whisker-plot/) is a quick two minute article on how to interpret them, and here is an info graphic explaining them from that same source:
+`Box and whisker` plots are fantastic data visualization tools--although they can be non-intuitive to decipher at first.  [Here](https://flowingdata.com/2008/02/15/how-to-read-and-use-a-box-and-whisker-plot/) is a quick two-minute article on how to interpret them, and here is an info graphic explanation from that same source:
 
 
 ![png](assets/images/posts/2020/box-and-whisker-plot.png)
@@ -642,7 +658,7 @@ pyplot.show()
 We can note that the box-and-whisker plots contain a lot of information about our data set in a compact form:
 
 * By examining the Y-axis values and 'whiskers' it is clear the data has a value spread of about 1 to 8 centimeters
-* Other than the `sepalWidth` variable the data does not contain outliers
+* Other than the `sepalWidth` variable, the data does not contain outliers
 * The interquartile range (IQR) also appears to have a narrow spread with the greatest amount of variation occurring in the `petalLengh` values
 * We can quickly identify the median value for each variable by examining the value of the green bar.  For example, `sepalWidth` appears to have a median of about 5.75.
 
@@ -663,20 +679,20 @@ The scatter plot matrix reinforces visually what we saw above in the correlation
 
 For example, we see that data points for `petalLength` vs. `petalWidth` increase steadily towards the upper right side of the graph in a diagonal line.  If we consult the correlations table we created earlier we find that these two variables are highly correlated at 0.96.
 
-On the other hand if we saw data points on the graph decreasing towards the lower right side of the graph we would know there was negative correlation.
+On the other hand, if we saw data points on the graph decreasing towards the lower right side of the graph we would acknowledge that there was negative correlation.
 
 `sepalWidth` and `sepalLength` on the other hand don't seem to have much correlation present since there doesn't appear to be a clear pattern in the plotted data points.  The correlation table confirms with a recorded value of -0.11 for these two variables.
 
-Here is an additional visual explaining these concepts:
+Here is a visual explanation of these concepts:
 
 
 ![png](assets/images/posts/2020/correlation-graphs.png)
 
 [Source](https://sphweb.bumc.bu.edu/otlt/MPH-Modules/BS/BS704_Correlation-Regression/BS704_Correlation-Regression_print.html)
 
-## Unstructured Text
+## Unstructured Text (IMDB Reviews)
 
-At this point we are staring to have a good initial understanding of what our data looks like.  However, what if we have unstructured data such as customer reviews as part of our collection?
+At this point we are staring to have a good initial understanding of what our data looks like. However, what if we have unstructured natural language data such as customer reviews as part of our collection?
 
 In this section we'll cover three easy techniques to analyze and assess unstructured textual data.
 
@@ -702,15 +718,16 @@ From all the negative words I think it's pretty clear someone didn't like this m
 
 ### World Clouds
 
-The first technique we'll cover is a word cloud.  
+The first technique we'll cover is a `word cloud`.
 
-Google says a word cloud is “an image composed of words used in a particular text or subject, in which the size of each word indicates its frequency or importance.”
+Google says a word cloud is "an image composed of words used in a particular text or subject, in which the size of each word indicates its frequency or importance."
 
-Thus the more often a specific words appears in the text, the bigger and bolder those words will appear in the word cloud.
+Thus, the more often a specific word appears in the text, the bigger and bolder those words will appear in the word cloud.
 
-So for example if we were to utilize a word cloud on a corpus of text related to customer support tickets it might help us to gain an initial understanding of the most common issues.  We might see the word 'slow' or 'missing' occur for a system that had latency and  data errors.
+So, for example if we were to utilize a word cloud on a corpus of text related to customer support tickets it might help us to gain an initial understanding of the most common issues. We might see the word 'slow' or 'missing' occur for a system that had latency and data errors.
 
 Let's create one from our data, and see what it looks like:
+
 
 
 ```python
@@ -731,11 +748,11 @@ wordcloud.to_image()
 
 
 
-We can see we get a powerful graphical analysis tool with almost no code!
+We quickly have a powerful graphical analysis tool with almost no code!
 
-So the words 'good' and 'time' have the 2nd and 3rd largest font size respectively.  We also see the word 'bad' in the word cloud, but its font size is much smaller.
+The words 'good' and 'time' have the 2nd and 3rd largest font size respectively.  We also see the word 'bad' in the word cloud, but its font size is much smaller.
 
-From this we can form an initial assumption that our sample of movie reviews contains more positive reviews than negative.  Now of course we'd need to empirically validate this with further analysis, but for an initial data exploration it serves the purpose of helping us form a story in our mind of what the data is telling us.
+From this we can form an initial assumption that our sample of movie reviews contains more positive reviews than negative.  Now of course we'd need to empirically validate this with further analysis, but for an initial data exploration it serves the purpose of helping us form a story in our mind of what the data is telling us and how to proceed next.
 
 ### Numerical Word Frequency Counts
 
@@ -797,7 +814,7 @@ data_analysis.most_common()[-10:]
 
 ### Sentence Lengths
 
-Next we'll examine the length of each record in our textual data set.
+Next we'll examine the length of each record in the reviews.
 
 First let's calculate the number of words per review, and store them in their own column:
 
@@ -871,7 +888,7 @@ reviewsDF.head()
 
 
 
-Next we can use the `describe()` function as we did on the Iris data to create descriptive statitics for the number of words in each review:
+Next we can use the `describe()` function as we did on the Iris data to create descriptive statistics for the number of words in each review:
 
 
 ```python
@@ -923,7 +940,7 @@ For example, if this was unstructured text containing user comments on applicati
 
 Again; however, this will be up to you and your domain knowledge of your data.
 
-As a final note, if we wanted to review the the five records with the least amount of words we could do this:
+As a final note, if we wanted to review the five records with the least amount of words we could do this:
 
 
 ```python
@@ -987,7 +1004,7 @@ reviewsDF.sort_values(by = ['Word Count'], ascending = True).head()
 
 
 
-This not only gives us the word count for each record, but also the content and the row index where the record can be found in the data set (i.e. the first column).
+This not only gives us the word count for each record, but also the content and the row index where the record can be found in the data set (i.e. the values in the table's first column).
 
 If you wanted to see the records with the largest number of words you could replace `ascending = True` with `ascending = False` like so:
 
@@ -1050,3 +1067,17 @@ reviewsDF.sort_values(by = ['Word Count'], ascending = False).head()
   </tbody>
 </table>
 </div>
+
+
+
+## Wrapping Up
+
+In this article we covered how to create a Jupyter Notebook template for initial data exploration. We then explored how to load the data, perform some simple cleaning operations, explore the data using numerical and graphic techniques, and we also examined three ways to initially analyze unstructured natural language data.
+
+On the basis of this template we have gained a deeper understanding of the story the data had to tell us, and next we could take a deeper dive into narrative development, actionable recommendations, or KPIs and baselines to measure future data sets against.
+
+If you have any methods, strategies, or experiences building out your own initial data exploration process and would like to share I would love to hear about them! Please let me know either in the comments or via email, and I will add them to this article (giving you full credit of course!).
+
+I'd also be more than happy to answer any questions you may have after reading this, or if you have any problems setting up your own Jupyter Notebook environment and need a hand.
+
+Thank you.

@@ -4,8 +4,8 @@ title:  "Incrementaly Modernizing Your Software Development Processes"
 tags: [ Software Development, Management]
 featured_image_thumbnail: assets/images/posts/2020/incrementaly-modernizing-your-software-development-processes_thumbnail.jpg
 featured_image: assets/images/posts/2020/incrementaly-modernizing-your-software-development-processes_title.jpg
-featured: true
-hidden: true
+featured: false
+hidden: false
 ---
 
 In this article we explore a strategy to assist software development teams who are looking to advance their limited, initial, and/or legacy software development processes (SDP) towards a more mature state in a modular, customizable way that builds a foundation for larger modernization initiatives later on such as:
