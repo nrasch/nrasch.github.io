@@ -4,8 +4,8 @@ title:  "Easy Initial Data Exploration Template"
 tags: [ Python, Data Analysis]
 featured_image_thumbnail: assets/images/posts/2020/easy-initial-data-exploration-template_thumbnail.jpg
 featured_image: assets/images/posts/2020/easy-initial-data-exploration-template_title.jpg
-featured: true
-hidden: true
+featured: false
+hidden: false
 ---
 
 In this article we explore what it means to create a [Jupyter Notebook](https://jupyter.org/) template for use in initial data exploration. The resulting familiarity with the data can then be utilized as the basis for further detailed analysis, narrative development, feature engineering, etc.
