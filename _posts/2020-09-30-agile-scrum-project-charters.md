@@ -28,15 +28,15 @@ Next, the [Project Management Institute (PMI)](https://www.pmi.org) has this to 
 
 “The charter is a project's best marketing tool. It is created at the very start of the project, when the selling of the project's goals and ideas needs to begin. It is an ideal place to document the relationships between the project and the organizational strategy.”
 
-This is starting to sound pretty good now!  Clearly, even for an agile project with lots of pivots, we’ll want to articulate the project’s benefits, why the project has been started in the first place, what value the project will deliver to customers, what sort of return on investment we might expect, etc.
+This is starting to sound pretty good in the context of Agile Scrum. Clearly, even for an agile project with lots of pivots, we’ll want to articulate the project’s benefits, why the project has been started in the first place, what value the project will deliver to customers, what sort of return on investment we might expect, etc.
 
-How about one more definition from [Wikipedia](https://en.wikipedia.org/wiki/Project_charter) to round us out?
+Let's examine a final definition from [Wikipedia](https://en.wikipedia.org/wiki/Project_charter) to round things out:
 
 “In project management, a project charter, project definition, or project statement is a statement of the scope, objectives, and participants in a project. It provides a preliminary delineation of roles and responsibilities, outlines the project's key goals, identifies the main stakeholders, and defines the authority of the project manager.”
 
 ## A Common Theme
 
-From the quotes above we can observe a common theme starting to form; we want a document that is created at the beginning of a project that does the following:
+Reviewing the sources above we can observe a common theme starting to form; we want a document that is created at the beginning of a project that does the following::
 
 * Defines the objective of the project
 * Defines who is involved in the project
@@ -50,7 +50,7 @@ However, unlike a kick off meeting we now have a written record of why we starte
 
 But what about the structure of the PC?  Do we have to follow some stuffy format when writing a PC that would garner stern looks from our Waterfall brethren if we didn’t follow it?
 
-“Some project managers may be misled by the word 'document' in the definition and by the specific list of information in PMBOK. They fear that they do not have a project charter unless they have a specific document formatted with certain headings. The PMBOK® Guide does not mandate the use of any specific document format, and project charters can take many forms. Often the charter appears in the form of a free-form email or memo.”  Source:  [PMI](https://www.pmi.org/learning/library/charter-selling-project-7473)
+“Some project managers may be misled by the word 'document' in the definition and by the specific list of information in PMBOK. They fear that they do not have a project charter unless they have a specific document formatted with certain headings. The PMBOK® Guide does not mandate the use of any specific document format, and project charters can take many forms. Often the charter appears in the form of a free-form email or memo.”  [PMI](https://www.pmi.org/learning/library/charter-selling-project-7473)
 
 So it appears we can be rather flexible--even Agile, we might say--when creating a PC that meets our organizational and project needs.
 
