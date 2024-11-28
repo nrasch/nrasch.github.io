@@ -44,7 +44,7 @@ plugins_dir:
   - jekyll-seo-tag
   - jekyll-sitemap
 
-# Pagination 
+# Pagination
 paginate: 5
 paginate_path: /page:num/
 
