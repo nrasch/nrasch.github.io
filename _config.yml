@@ -18,8 +18,8 @@ author:
   name: 'Nathan Rasch'
   image: 'nathan_rasch.jpg'
   greetings: 'Welcome'
-  description: "My name is Nathan Rasch. I'm an organizational leader, project manager, and software developer living in Denver, CO."
-  bio: "Nathan has worked throughout his career as an organizational leader, project manager, and software developer.  He has an MBA in Business Administration, a BA in Mathematics, a PMI Project Management Professional (PMP) cetification, and he is a Certified ScrumMaster (CSM) and Certified SAFe® 5 Scrum Master (SSM)."
+  description: "My name is Nathan Rasch, and I am an organizational leader, project manager, and software developer based in Rapid City, SD."
+  bio: "Nathan Rasch has excelled in his career as an organizational leader, project manager, and software developer, holding an MBA in Business Administration, a BA in Mathematics, and certifications including PMI's Project Management Professional (PMP), Certified ScrumMaster (CSM), and Certified SAFe® 6 Scrum Master (SSM)."
 
 # Contact form setings
 email: nathan@obsidiantech.net
@@ -44,7 +44,7 @@ plugins_dir:
   - jekyll-seo-tag
   - jekyll-sitemap
 
-# Pagination
+# Pagination 
 paginate: 5
 paginate_path: /page:num/
 
